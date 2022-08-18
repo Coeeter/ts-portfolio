@@ -96,14 +96,15 @@ export default function Contact() {
         justifyContent: 'space-between',
       }}
       pt={1}
+      paddingTop="1rem"
     >
-      <Stack pb={1}>
+      <Stack>
         <Header header="Contact Me" />
         <Grid
           container
           maxWidth="lg"
           marginX="auto"
-          justifyContent="center"
+          alignItems="center"
           marginY="1rem"
           pt={5}
           sx={{
@@ -202,7 +203,6 @@ export default function Contact() {
       <Box
         bgcolor={'primary.main'}
         textAlign="center"
-        sx={isMobile ? { zIndex: '100' } : {}}
       >
         <Typography variant="body1" p={2}>
           Copyright © 2022 designed by N. Nasrullah

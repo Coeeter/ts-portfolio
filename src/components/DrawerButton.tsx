@@ -55,6 +55,7 @@ export default function DrawerButton() {
           {navLinks.map((link) => {
             return (
               <a
+                key={link.name}
                 href={link.path}
                 style={{
                   color: 'white',
@@ -62,7 +63,7 @@ export default function DrawerButton() {
                 }}
               >
                 <List>
-                  <ListItem key={link.name} disablePadding>
+                  <ListItem disablePadding>
                     <ListItemButton>
                       <ListItemText primary={link.name} />
                     </ListItemButton>

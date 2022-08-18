@@ -1,15 +1,9 @@
 import { useEffect, useState } from 'react';
-import {
-  Box,
-  Fab,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from '@mui/material';
+import { Box, Fab, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { ArrowUpward } from '@mui/icons-material';
 import { Stack } from '@mui/system';
 import TypewriterComponent from 'typewriter-effect';
-import SittingImage from '../assets/SittingInGrass.png';
+import SittingImage from '../assets/header.jpeg';
 
 export default function Home() {
   const theme = useTheme();
@@ -58,18 +52,6 @@ export default function Home() {
       <Box
         component="div"
         sx={{
-          width: '100%',
-          height: '100vh',
-          backgroundColor: 'primary.main',
-          opacity: '0.4',
-          position: 'absolute',
-          top: '0',
-          left: '0',
-        }}
-      />
-      <Box
-        component="div"
-        sx={{
           backgroundImage: `url('${SittingImage}')`,
           width: '100%',
           height: '100vh',
@@ -84,6 +66,7 @@ export default function Home() {
           right: '10vw',
           transform: 'translate(0, -50%)',
           userSelect: 'none',
+          textShadow: '2px 2px black',
         }}
       >
         <Typography variant={nameSize}>N. Nasrullah</Typography>
