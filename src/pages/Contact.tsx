@@ -25,6 +25,25 @@ type FormValues = {
   message: string;
 };
 
+const contactInfo = [
+  {
+    name: 'Email',
+    icon: <Email />,
+    value: 'nasrullah01n@gmail.com',
+    href: 'mailto:nasrullah01n@gmail.com',
+  },
+  {
+    name: 'Github',
+    icon: <GitHub />,
+    value: 'https://github.com/Coeeter',
+  },
+  {
+    name: 'LinkedIn',
+    icon: <LinkedIn />,
+    value: 'https://www.linkedin.com/in/noorullah-nasrullah-50a413225/',
+  },
+];
+
 export default function Contact() {
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -32,24 +51,6 @@ export default function Contact() {
   const form = useRef<HTMLFormElement>();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const contactInfo = [
-    {
-      name: 'Email',
-      icon: <Email />,
-      value: 'nasrullah01n@gmail.com',
-      href: 'mailto:nasrullah01n@gmail.com',
-    },
-    {
-      name: 'Github',
-      icon: <GitHub />,
-      value: 'https://github.com/Coeeter',
-    },
-    {
-      name: 'LinkedIn',
-      icon: <LinkedIn />,
-      value: 'https://www.linkedin.com/in/noorullah-nasrullah-50a413225/',
-    },
-  ];
 
   const {
     register,
@@ -105,7 +106,7 @@ export default function Contact() {
           maxWidth="lg"
           marginX="auto"
           alignItems="center"
-          marginY="1rem"
+          marginTop="1rem"
           pt={5}
           sx={{
             backgroundColor: 'background.paper',

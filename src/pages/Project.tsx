@@ -14,50 +14,51 @@ import ClickToRunImage from '../assets/clicktorun.png';
 import ClickToRunImageFlutter from '../assets/clicktorun-flutter.png';
 import TEFImage from '../assets/flutter.png';
 
+const projects = [
+  {
+    image: SpotifunesImage,
+    name: 'Spotifunes',
+    description: 'A native Android music player Application built using Java',
+    githubLink: 'https://github.com/Coeeter/Spotifunes',
+  },
+  {
+    image: ClickToEatImage,
+    name: 'ClickToEat',
+    description: 'A full-stack Web Application built using Node.js',
+    githubLink: 'https://github.com/Coeeter/ClickToEat',
+  },
+  {
+    image: ClickToEatImage,
+    name: 'Android ClickToEat',
+    description:
+      'A native Android client of ClickToEat API, built using Kotlin',
+    githubLink: 'https://github.com/Coeeter/Android_ClickToEat',
+  },
+  {
+    image: ClickToRunImage,
+    name: 'ClickToRun',
+    description:
+      'A native Android Running tracker Application, built using Kotlin',
+    githubLink: 'https://github.com/Coeeter/ClickToRun',
+  },
+  {
+    image: ClickToRunImageFlutter,
+    name: 'Flutter ClickToRun',
+    description:
+      'A Running Tracker Application, built using the Flutter framework',
+    githubLink: 'https://github.com/Coeeter/flutter-clicktorun',
+  },
+  {
+    image: TEFImage,
+    name: 'TET Flutter',
+    description: 'A Flutter application to track transport expenses',
+    githubLink: 'https://github.com/Coeeter/TransportExpenseFlutter',
+  },
+];
+
 export default function Project() {
   const isLesserThan600px = useMediaQuery('(max-width: 600px)');
   const isLesserThan450px = useMediaQuery('(max-width: 450px)');
-  const projects = [
-    {
-      image: SpotifunesImage,
-      name: 'Spotifunes',
-      description: 'A native Android music player Application built using Java',
-      githubLink: 'https://github.com/Coeeter/Spotifunes',
-    },
-    {
-      image: ClickToEatImage,
-      name: 'ClickToEat',
-      description: 'A full-stack Web Application built using Node.js',
-      githubLink: 'https://github.com/Coeeter/ClickToEat',
-    },
-    {
-      image: ClickToEatImage,
-      name: 'Android ClickToEat',
-      description:
-        'A native Android client of ClickToEat API, built using Kotlin',
-      githubLink: 'https://github.com/Coeeter/Android_ClickToEat',
-    },
-    {
-      image: ClickToRunImage,
-      name: 'ClickToRun',
-      description:
-        'A native Android Running tracker Application, built using Kotlin',
-      githubLink: 'https://github.com/Coeeter/ClickToRun',
-    },
-    {
-      image: ClickToRunImageFlutter,
-      name: 'Flutter ClickToRun',
-      description:
-        'A Running Tracker Application, built using the Flutter framework',
-      githubLink: 'https://github.com/Coeeter/flutter-clicktorun',
-    },
-    {
-      image: TEFImage,
-      name: 'TET Flutter',
-      description: 'A Flutter application to track transport expenses',
-      githubLink: 'https://github.com/Coeeter/TransportExpenseFlutter',
-    },
-  ];
 
   return (
     <Box id="projects" paddingY="1rem">
