@@ -116,7 +116,7 @@ export default function About() {
             <Typography mb={2} variant={textStyle}>
               AY21/22 Director's List
             </Typography>
-            <Header header="Technology/Frameworks Used" variant="sub" />
+            <Header header="Skills" variant="sub" />
             <Stack mb={2}>
               {technologies.map((tech) => (
                 <Typography key={tech} variant={textStyle}>

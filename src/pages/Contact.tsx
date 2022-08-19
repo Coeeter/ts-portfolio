@@ -4,6 +4,7 @@ import {
   Card,
   CardHeader,
   CircularProgress,
+  Fab,
   Grid,
   Snackbar,
   Stack,
@@ -13,7 +14,7 @@ import {
   useTheme,
 } from '@mui/material';
 import { Box } from '@mui/system';
-import { Email, GitHub, LinkedIn } from '@mui/icons-material';
+import { ArrowUpward, Email, GitHub, LinkedIn } from '@mui/icons-material';
 import Header from '../components/Header';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import emailjs from '@emailjs/browser';
@@ -49,6 +50,7 @@ export default function Contact() {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState('');
   const form = useRef<HTMLFormElement>();
+  const footer = useRef<HTMLDivElement>();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -202,6 +204,7 @@ export default function Contact() {
         </Grid>
       </Stack>
       <Box
+        ref={footer as RefObject<HTMLDivElement>}
         bgcolor={'primary.main'}
         textAlign="center"
       >
@@ -221,6 +224,35 @@ export default function Contact() {
         }}
         message={message}
       />
+      <Fab
+        ref={(ref) => {
+          window.onscroll = () => {
+            if (ref == null || footer.current == null) return;
+            const difference = footer.current.offsetTop - window.scrollY
+            const percent = difference / document.documentElement.clientHeight
+            if (percent < 1) {
+              ref.style.bottom = `calc(${footer.current.clientHeight}px + 1rem)`
+              return;
+            }
+            ref.style.bottom = '1rem';
+          };
+        }}
+        sx={{
+          zIndex: '99',
+          position: 'fixed',
+          bottom: '1rem',
+          right: '1rem',
+          bgcolor: 'primary.main',
+          color: 'white',
+          transition: 'opacity 0.3s',
+          '&:hover': {
+            bgcolor: '#0d7a7a',
+          },
+        }}
+        onClick={() => window.scrollTo(0, 0)}
+      >
+        <ArrowUpward />
+      </Fab>
     </Box>
   );
 }

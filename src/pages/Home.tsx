@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import { Box, Fab, Typography, useMediaQuery, useTheme } from '@mui/material';
-import { ArrowUpward } from '@mui/icons-material';
+import { useState } from 'react';
+import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
+
 import { Stack } from '@mui/system';
 import TypewriterComponent from 'typewriter-effect';
 import SittingImage from '../assets/header.jpeg';
@@ -12,7 +12,6 @@ export default function Home() {
   const nameSize = isMobile ? (secondMediaQuery ? 'h3' : 'h2') : 'h1';
   const descriptionSize = isMobile ? (secondMediaQuery ? 'h6' : 'h5') : 'h4';
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isScrolling, setIsScrolling] = useState(false);
   const items = [
     'an Android developer',
     'a web developer',
@@ -21,19 +20,11 @@ export default function Home() {
     'a TP student',
   ];
 
-  const checkScroll = () => {
-    setIsScrolling(window.scrollY > 70);
-  };
-
-  useEffect(checkScroll, []);
-
-  window.addEventListener('scroll', checkScroll);
-
   return (
     <Box
       id="home"
       component="div"
-      sx={{ overflow: 'hidden', position: 'relative' }}
+      sx={{ overflow: 'hidden', position: 'relative', zIndex: '100' }}
     >
       <Box
         component="div"
@@ -89,25 +80,6 @@ export default function Home() {
           />
         </Typography>
       </Stack>
-      <Fab
-        sx={{
-          opacity: isScrolling ? 1 : 0,
-          zIndex: isScrolling ? '99' : '-99',
-          position: 'fixed',
-          bottom: '1rem',
-          right: '1rem',
-          bgcolor: 'primary.main',
-          color: 'white',
-          padding: '1rem',
-          transition: 'opacity 0.3s',
-          '&:hover': {
-            bgcolor: '#0d7a7a',
-          },
-        }}
-        onClick={() => window.scrollTo(0, 0)}
-      >
-        <ArrowUpward />
-      </Fab>
     </Box>
   );
 }
