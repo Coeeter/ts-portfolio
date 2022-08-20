@@ -4,6 +4,7 @@ import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import { Stack } from '@mui/system';
 import TypewriterComponent from 'typewriter-effect';
 import SittingImage from '../assets/header.jpeg';
+import Navbar from '../components/Navbar';
 
 export default function Home() {
   const theme = useTheme();
@@ -21,65 +22,68 @@ export default function Home() {
   ];
 
   return (
-    <Box
-      id="home"
-      component="div"
-      sx={{ overflow: 'hidden', position: 'relative', zIndex: '100' }}
-    >
+    <>
+      <Navbar isBgActive={false} />
       <Box
+        id="home"
         component="div"
-        sx={{
-          display: isMobile ? 'none' : 'block',
-          width: '100%',
-          height: '100vh',
-          backgroundColor: 'white',
-          opacity: '0.2',
-          position: 'absolute',
-          top: '0',
-          left: '50%',
-          transform: 'rotate(-30deg)',
-        }}
-      />
-      <Box
-        component="div"
-        sx={{
-          backgroundImage: `url('${SittingImage}')`,
-          width: '100%',
-          height: '100vh',
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover',
-        }}
-      />
-      <Stack
-        sx={{
-          position: 'absolute',
-          top: '50vh',
-          right: '10vw',
-          transform: 'translate(0, -50%)',
-          userSelect: 'none',
-          textShadow: '2px 2px black',
-        }}
+        sx={{ overflow: 'hidden', position: 'relative', zIndex: '100' }}
       >
-        <Typography variant={nameSize}>N. Nasrullah</Typography>
-        <Typography variant={descriptionSize} textAlign="center">
-          <TypewriterComponent
-            key={currentIndex}
-            onInit={(typewriter) => {
-              typewriter
-                .changeDelay(100)
-                .typeString(items[currentIndex])
-                .pauseFor(1000)
-                .deleteAll()
-                .callFunction(() => {
-                  let nextIndex = currentIndex + 1;
-                  if (nextIndex === items.length) nextIndex = 0;
-                  setCurrentIndex(nextIndex);
-                })
-                .start();
-            }}
-          />
-        </Typography>
-      </Stack>
-    </Box>
+        <Box
+          component="div"
+          sx={{
+            display: isMobile ? 'none' : 'block',
+            width: '100%',
+            height: '100vh',
+            backgroundColor: 'white',
+            opacity: '0.2',
+            position: 'absolute',
+            top: '0',
+            left: '50%',
+            transform: 'rotate(-30deg)',
+          }}
+        />
+        <Box
+          component="div"
+          sx={{
+            backgroundImage: `url('${SittingImage}')`,
+            width: '100%',
+            height: '100vh',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+          }}
+        />
+        <Stack
+          sx={{
+            position: 'absolute',
+            top: '50vh',
+            right: '10vw',
+            transform: 'translate(0, -50%)',
+            userSelect: 'none',
+            textShadow: '2px 2px black',
+          }}
+        >
+          <Typography variant={nameSize}>N. Nasrullah</Typography>
+          <Typography variant={descriptionSize} textAlign="center">
+            <TypewriterComponent
+              key={currentIndex}
+              onInit={(typewriter) => {
+                typewriter
+                  .changeDelay(100)
+                  .typeString(items[currentIndex])
+                  .pauseFor(1000)
+                  .deleteAll()
+                  .callFunction(() => {
+                    let nextIndex = currentIndex + 1;
+                    if (nextIndex === items.length) nextIndex = 0;
+                    setCurrentIndex(nextIndex);
+                  })
+                  .start();
+              }}
+            />
+          </Typography>
+        </Stack>
+      </Box>
+    </>
   );
 }

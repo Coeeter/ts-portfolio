@@ -13,6 +13,7 @@ import ClickToEatImage from '../assets/clicktoeat.png';
 import ClickToRunImage from '../assets/clicktorun.png';
 import ClickToRunImageFlutter from '../assets/clicktorun-flutter.png';
 import TEFImage from '../assets/flutter.png';
+import Navbar, { NavTypes } from '../components/Navbar';
 
 const projects = [
   {
@@ -61,58 +62,61 @@ export default function Project() {
   const isLesserThan450px = useMediaQuery('(max-width: 450px)');
 
   return (
-    <Box id="projects" paddingY="1rem">
-      <Header header="My Projects" />
-      <Grid
-        container
-        maxWidth={'lg'}
-        marginX="auto"
-        justifyContent="center"
-        minHeight={'100vh'}
-      >
-        {projects.map((project) => {
-          return (
-            <a
-              key={project.name}
-              href={project.githubLink}
-              style={{ textDecoration: 'none' }}
-            >
-              <Grid item padding="1rem">
-                <Card
-                  sx={{
-                    width: isLesserThan600px
-                      ? isLesserThan450px
-                        ? '95%'
-                        : '75%'
-                      : '260px',
-                    marginInline: 'auto',
-                    transition: 'transform 0.2s ease-in-out',
-                    '&:hover': isLesserThan450px
-                      ? {}
-                      : {
-                          transform: 'scale(1.05)',
-                        },
-                  }}
-                >
-                  <CardMedia
-                    component="img"
-                    image={project.image}
-                    sx={{ backgroundColor: 'primary.main' }}
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      {project.name}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {project.description}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            </a>
-          );
-        })}
-      </Grid>
-    </Box>
+    <>
+      <Navbar isBgActive={true} selected={NavTypes.Projects} />
+      <Box id="projects" paddingY="1rem">
+        <Header header="My Projects" />
+        <Grid
+          container
+          maxWidth={'lg'}
+          marginX="auto"
+          justifyContent="center"
+          minHeight={'100vh'}
+        >
+          {projects.map((project) => {
+            return (
+              <a
+                key={project.name}
+                href={project.githubLink}
+                style={{ textDecoration: 'none' }}
+              >
+                <Grid item padding="1rem">
+                  <Card
+                    sx={{
+                      width: isLesserThan600px
+                        ? isLesserThan450px
+                          ? '95%'
+                          : '75%'
+                        : '260px',
+                      marginInline: 'auto',
+                      transition: 'transform 0.2s ease-in-out',
+                      '&:hover': isLesserThan450px
+                        ? {}
+                        : {
+                            transform: 'scale(1.05)',
+                          },
+                    }}
+                  >
+                    <CardMedia
+                      component="img"
+                      image={project.image}
+                      sx={{ backgroundColor: 'primary.main' }}
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                        {project.name}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {project.description}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              </a>
+            );
+          })}
+        </Grid>
+      </Box>
+    </>
   );
 }

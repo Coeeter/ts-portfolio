@@ -1,5 +1,6 @@
 import {
   AppBar,
+  Box,
   Button,
   Toolbar,
   Typography,
@@ -7,32 +8,51 @@ import {
   useTheme,
 } from '@mui/material';
 import { Stack } from '@mui/system';
+import { RefObject, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import DrawerButton from './DrawerButton';
+
+export enum NavTypes {
+  About,
+  Projects,
+  Contacts,
+}
 
 export const navLinks = [
   {
+    type: NavTypes.About,
     name: 'About Me',
-    path: '#about',
+    path: '/about',
   },
   {
+    type: NavTypes.Projects,
     name: 'My Projects',
-    path: '#projects',
+    path: '/projects',
   },
   {
+    type: NavTypes.Contacts,
     name: 'Contact Me',
-    path: '#contact',
+    path: '/contact',
   },
 ];
 
-export default function Navbar() {
+export default function Navbar({
+  isBgActive,
+  selected,
+}: {
+  isBgActive: Boolean;
+  selected?: NavTypes | null;
+}) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const appbar = useRef<HTMLDivElement>();
 
   return (
     <>
       <AppBar
+        ref={appbar as RefObject<HTMLDivElement>}
         sx={{
-          bgcolor: 'transparent',
+          bgcolor: isBgActive ? 'primary.main' : 'transparent',
           position: 'absolute',
           top: 0,
           left: 0,
@@ -46,7 +66,12 @@ export default function Navbar() {
             justifyContent: 'space-between',
           }}
         >
-          <Typography variant="h5" sx={{ cursor: 'pointer' }}>
+          <Typography
+            variant="h5"
+            sx={{ cursor: 'pointer', textDecoration: 'none', color: 'white' }}
+            component={Link}
+            to="/"
+          >
             N. Nasrullah
           </Typography>
           {!isMobile ? (
@@ -59,7 +84,7 @@ export default function Navbar() {
                     sx={{
                       textTransform: 'none',
                       color: 'white',
-                      opacity: '0.7',
+                      opacity: link.type === selected ? '1' : '0.7',
                       transition: 'all 0.3s',
                       ':hover': {
                         backgroundColor: 'transparent',
@@ -78,6 +103,10 @@ export default function Navbar() {
           )}
         </Toolbar>
       </AppBar>
+      <Box
+        height={`${appbar.current?.clientHeight || 70}px`}
+        display={isBgActive ? 'block' : 'none'}
+      />
     </>
   );
 }
