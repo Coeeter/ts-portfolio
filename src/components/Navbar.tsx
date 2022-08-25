@@ -1,5 +1,6 @@
 import {
   AppBar,
+  Box,
   Button,
   Toolbar,
   Typography,
@@ -8,6 +9,7 @@ import {
 } from '@mui/material';
 import { Stack } from '@mui/system';
 import DrawerButton from './DrawerButton';
+import logo from '../assets/favicon-310.png';
 
 export const navLinks = [
   {
@@ -46,9 +48,25 @@ export default function Navbar() {
             justifyContent: 'space-between',
           }}
         >
-          <Typography variant="h5" sx={{ cursor: 'pointer' }}>
-            N. Nasrullah
-          </Typography>
+          <Stack
+            direction="row"
+            alignItems="center"
+            gap={1}
+            sx={{ cursor: 'pointer' }}
+          >
+            <Box
+              component="img"
+              src={logo}
+              alt="Logo"
+              sx={{
+                width: '50px',
+                marginBlock: '1rem',
+              }}
+            />
+            <Typography variant="h5" sx={{ cursor: 'pointer' }}>
+              N. Nasrullah
+            </Typography>
+          </Stack>
           {!isMobile ? (
             <Stack direction="row" gap="1.5rem" alignItems="center">
               {navLinks.map((link) => {
