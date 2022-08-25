@@ -60,6 +60,7 @@ const projects = [
 export default function Project() {
   const isLesserThan600px = useMediaQuery('(max-width: 600px)');
   const isLesserThan450px = useMediaQuery('(max-width: 450px)');
+  document.title = "N. Nasrullah - My Projects"
 
   return (
     <>

@@ -1,11 +1,20 @@
-import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
+import {
+  Box,
+  SxProps,
+  Theme,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
 
 export default function Header({
   header,
   variant,
+  sx,
 }: {
   header: string;
   variant?: string;
+  sx?: SxProps<Theme>;
 }) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
@@ -26,10 +35,7 @@ export default function Header({
         };
 
   return (
-    <Box
-      {...boxStyle}
-      mb={variant === 'sub' ? 2 : (isMobile ? 3 : 5)}
-    >
+    <Box {...boxStyle} mb={variant === 'sub' ? 2 : isMobile ? 3 : 5} sx={sx}>
       <Typography
         variant={variant === 'sub' ? 'h5' : 'h4'}
         textAlign="center"

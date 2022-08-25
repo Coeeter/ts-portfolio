@@ -20,6 +20,7 @@ export default function Home() {
     'a Node.js developer',
     'a TP student',
   ];
+  document.title = "N. Nasrullah"
 
   return (
     <>

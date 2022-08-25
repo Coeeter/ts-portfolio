@@ -10,16 +10,43 @@ import Header from '../components/Header';
 import ProfileImage from '../assets/profile.jpeg';
 import Navbar, { NavTypes } from '../components/Navbar';
 
-const technologies = [
-  'Kotlin (For native android development)',
-  'Node.js (For backend development)',
-  'HTML, CSS, JavaScript (Frontend development for web)',
-  'Flutter using Dart (For android and IOS development)',
-  'Firebase (For backend)',
-  'MySQL (For SQL database)',
-  'React (Frontend development for web)',
-  'TypeScript (For React and Node.js)',
-  'Python using Jupyter Notebook (For Data Structures and Algorithms)',
+const techItems = [
+  {
+    name: 'Kotlin',
+    for: 'For native android development',
+  },
+  {
+    name: 'Node.js',
+    for: 'For backend development',
+  },
+  {
+    name: 'HTML, CSS, JavaScript',
+    for: 'Frontend development for web',
+  },
+  {
+    name: 'Flutter',
+    for: 'For Android and IOS development',
+  },
+  {
+    name: 'React',
+    for: 'Frontend development for web',
+  },
+  {
+    name: 'TypeScript',
+    for: 'For React and Node.js',
+  },
+  {
+    name: 'Python',
+    for: 'For Data Structures and Algorithms',
+  },
+  {
+    name: 'MySQL',
+    for: 'For SQL database',
+  },
+  {
+    name: 'Firebase',
+    for: 'For backend',
+  },
 ];
 
 export default function About() {
@@ -31,6 +58,7 @@ export default function About() {
         justifyContent: 'center',
       }
     : {};
+  document.title = 'N. Nasrullah - About Me';
 
   return (
     <>
@@ -73,18 +101,16 @@ export default function About() {
               <Header header="Intro" variant="sub" />
               <Stack mb={2} gap={1}>
                 <Typography variant={textStyle}>
-                  I am Noorullah Nasrullah and I am from Singapore. a student at
-                  Temasek Polytechnic (TP), pursuing a diploma in Information
-                  Technology
+                  I am Noorullah Nasrullah and I am from Singapore.
                 </Typography>
                 <Typography variant={textStyle}>
                   I am currently a second year student at Temasek Polytechnic
-                  (TP), pursuing a diploma in Information Technology
+                  (TP), pursuing a diploma in Information Technology.
                 </Typography>
                 <Typography variant={textStyle}>
                   I hope to continue to learn more new technologies and broaden
                   my understanding of the ever-changing Tech world to make
-                  myself relevant in the future
+                  myself relevant in the future.
                 </Typography>
               </Stack>
               <Header header="Interests" variant="sub" />
@@ -123,9 +149,9 @@ export default function About() {
               </Typography>
               <Header header="Skills" variant="sub" />
               <Stack mb={2}>
-                {technologies.map((tech) => (
-                  <Typography key={tech} variant={textStyle}>
-                    {tech}
+                {techItems.map((tech) => (
+                  <Typography key={tech.name} variant={textStyle}>
+                    <b>{tech.name}</b> ({tech.for})
                   </Typography>
                 ))}
               </Stack>
