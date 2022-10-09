@@ -61,31 +61,25 @@ export default function Contact() {
     reset,
   } = useForm<FormValues>();
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
     console.log(data);
     setIsLoading(true);
     document.body.style.overflow = 'hidden';
-    emailjs
-      .sendForm(
+    try {
+      await emailjs.sendForm(
         process.env.REACT_APP_SERVICE_ID!,
         process.env.REACT_APP_TEMPLATE_ID!,
         form.current!,
         process.env.REACT_APP_PUBLIC_KEY!
-      )
-      .then((value) => {
-        reset();
-        setIsLoading(false);
-        document.body.style.overflowY = 'scroll';
-        setMessage('Successfully sent email!');
-        setIsOpen(true);
-      })
-      .catch((error) => {
-        reset();
-        setIsLoading(false);
-        document.body.style.overflowY = 'scroll';
-        setMessage('Something went wrong. Try again later!');
-        setIsOpen(true);
-      });
+      );
+      setMessage('Successfully sent email!');
+    } catch (e) {
+      setMessage('Something went wrong. Try again later!');
+    }
+    reset();
+    setIsLoading(false);
+    document.body.style.overflowY = 'scroll';
+    setIsOpen(true);
   };
   return (
     <Box
@@ -228,10 +222,10 @@ export default function Contact() {
         ref={(ref) => {
           window.onscroll = () => {
             if (ref == null || footer.current == null) return;
-            const difference = footer.current.offsetTop - window.scrollY
-            const percent = difference / document.documentElement.clientHeight
+            const difference = footer.current.offsetTop - window.scrollY;
+            const percent = difference / document.documentElement.clientHeight;
             if (percent < 1) {
-              ref.style.bottom = `calc(${footer.current.clientHeight}px + 1rem)`
+              ref.style.bottom = `calc(${footer.current.clientHeight}px + 1rem)`;
               return;
             }
             ref.style.bottom = '1rem';

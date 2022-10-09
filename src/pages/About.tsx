@@ -109,12 +109,15 @@ export default function About() {
               <Typography variant={textStyle}>
                 I am currently pursuing a Diploma in Information Technology at
                 Temasek Polytechnic and as of now(2022), I am currently in my
-                second year with a Cumulative Grade Point Average of <b>3.89</b>
+                second year with a Cumulative Grade Point Average of <b>3.85</b>
               </Typography>
             </Stack>
-            <Header header="Awards Earned" variant="sub" />
+            <Header header="Achievements" variant="sub" />
             <Typography mb={2} variant={textStyle}>
               AY21/22 Director's List
+            </Typography>
+            <Typography mb={2} variant={textStyle}>
+              Won top 8 of hackathon(PSA CodeSprint) in a team of 4
             </Typography>
             <Header header="Skills" variant="sub" />
             <Stack mb={2}>

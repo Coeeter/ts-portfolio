@@ -13,6 +13,7 @@ import ClickToEatImage from '../assets/clicktoeat.png';
 import ClickToRunImage from '../assets/clicktorun.png';
 import ClickToRunImageFlutter from '../assets/clicktorun-flutter.png';
 import TEFImage from '../assets/flutter.png';
+import PortFix from '../assets/portfix.png'
 
 const projects = [
   {
@@ -53,6 +54,12 @@ const projects = [
     name: 'TET Flutter',
     description: 'A Flutter application to track transport expenses',
     githubLink: 'https://github.com/Coeeter/TransportExpenseFlutter',
+  },
+  {
+    image: PortFix,
+    name: 'PortFix',
+    description: 'A project which won top 8 of hackathon in a team of 4',
+    githubLink: 'https://github.com/PuttTim/PSA-vpn2',
   },
 ];
 
