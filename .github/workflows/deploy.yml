@@ -18,11 +18,10 @@ jobs:
           node-version: "16"
       - name: Installing dependencies
         run: npm ci
+        name: Create .env file
+        run: |
+          echo "${{ secrets.ENV }}" > .env
       - name: Building project
-        env:
-          REACT_APP_SERVICE_ID: ${{ secrets.REACT_APP_SERVICE_ID }}
-          REACT_APP_TEMPLATE_ID: ${{ secrets.REACT_APP_TEMPLATE_ID }}
-          REACT_APP_PUBLIC_KEY: ${{ secrets.REACT_APP_PUBLIC_KEY }}
         run: npm run build
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
