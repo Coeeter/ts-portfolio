@@ -1,101 +1,81 @@
-import {
-  AppBar,
-  Box,
-  Button,
-  Toolbar,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from '@mui/material';
-import { Stack } from '@mui/system';
-import DrawerButton from './DrawerButton';
-import logo from '../assets/favicon-310.png';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 
-export const navLinks = [
-  {
-    name: 'About Me',
-    path: '#about',
-  },
-  {
-    name: 'My Projects',
-    path: '#projects',
-  },
-  {
-    name: 'Contact Me',
-    path: '#contact',
-  },
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/contact', label: 'Contact' },
 ];
 
-export default function Navbar() {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+export default function NavBar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+  const currentPath = router.pathname;
 
   return (
-    <>
-      <AppBar
-        sx={{
-          bgcolor: 'transparent',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-        }}
-        elevation={0}
+    <nav className="absolute top-0 left-0 p-6 w-full flex justify-between items-center">
+      <Link
+        href="/"
+        className="text-2xl text-slate-200"
+        onClick={() => setIsOpen(false)}
       >
-        <Toolbar
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
+        N. Nasrullah
+      </Link>
+      <div>
+        <button
+          className={`md:hidden flex flex-col gap-1  absolute top-0 right-0 z-20 mx-6 my-8`}
+          onClick={() => {
+            setIsOpen(isOpen => !isOpen);
           }}
         >
-          <Stack
-            direction="row"
-            alignItems="center"
-            gap={1}
-            sx={{ cursor: 'pointer' }}
-          >
-            <Box
-              component="img"
-              src={logo}
-              alt="Logo"
-              sx={{
-                width: '50px',
-                marginBlock: '1rem',
+          <div
+            className={`h-1 rounded-xl w-[24px] bg-slate-300 transition-all duration-300 ease-in-out ${
+              isOpen ? 'rotate-45 origin-top-left' : ''
+            }`}
+          ></div>
+          <div
+            className={`h-1 rounded-xl w-[24px] bg-slate-300 transition-all duration-300 ease-in-out ${
+              isOpen ? 'opacity-0' : ''
+            }`}
+          ></div>
+          <div
+            className={`h-1 rounded-xl w-[24px] bg-slate-300 transition-all duration-300 ease-in-out ${
+              isOpen ? '-rotate-45 origin-bottom-left' : ''
+            }`}
+          ></div>
+        </button>
+      </div>
+      <div
+        className={`absolute top-0 left-0 w-screen h-screen transition duration-300 ease-in-out md:hidden ${
+          isOpen ? 'backdrop-blur-sm' : 'pointer-events-none'
+        }`}
+        onClick={() => setIsOpen(false)}
+      ></div>
+      <ul
+        className={`${
+          isOpen ? 'translate-x-0' : 'translate-x-full'
+        } absolute top-0 right-0 p-8 pt-16 space-y-10 items-center justify-center flex flex-col translate-x-full transition duration-300 ease-in-out bg-slate-800 w-3/4 h-screen md:translate-x-0 md:p-0 md:space-y-0 md:relative md:bg-transparent md:w-fit md:h-fit md:space-x-4 md:flex-row`}
+      >
+        {links.map(({ href, label }) => (
+          <li key={`${href}${label}`}>
+            <Link
+              href={href}
+              onClick={() => {
+                setIsOpen(false);
               }}
-            />
-            <Typography variant="h5" sx={{ cursor: 'pointer' }}>
-              N. Nasrullah
-            </Typography>
-          </Stack>
-          {!isMobile ? (
-            <Stack direction="row" gap="1.5rem" alignItems="center">
-              {navLinks.map((link) => {
-                return (
-                  <Button
-                    key={link.name}
-                    variant="text"
-                    sx={{
-                      textTransform: 'none',
-                      color: 'white',
-                      opacity: '0.7',
-                      transition: 'all 0.3s',
-                      ':hover': {
-                        backgroundColor: 'transparent',
-                        opacity: '1',
-                      },
-                    }}
-                    href={link.path}
-                  >
-                    {link.name}
-                  </Button>
-                );
-              })}
-            </Stack>
-          ) : (
-            <DrawerButton />
-          )}
-        </Toolbar>
-      </AppBar>
-    </>
+              className={`w-full block text-xl md:w-fit md:text-base ${
+                currentPath == href
+                  ? 'text-slate-200 font-bold'
+                  : 'text-slate-300 hover:text-slate-100'
+              }`}
+            >
+              {label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 }
