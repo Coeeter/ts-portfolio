@@ -1,12 +1,19 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import Button from './Button';
 
 const links = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
   { href: '/projects', label: 'Projects' },
   { href: '/contact', label: 'Contact' },
+];
+
+const hamburgerStyles = [
+  'rotate-45 origin-top-left',
+  'opacity-0',
+  '-rotate-45 origin-bottom-left',
 ];
 
 export default function NavBar() {
@@ -25,30 +32,21 @@ export default function NavBar() {
       </Link>
       <div>
         <button
-          className={`md:hidden flex flex-col gap-1  absolute top-0 right-0 z-20 mx-6 my-8`}
-          onClick={() => {
-            setIsOpen(isOpen => !isOpen);
-          }}
+          className={`md:hidden flex flex-col gap-1 items-center absolute top-0 right-0 z-50 mx-6 my-8`}
+          onClick={() => setIsOpen(isOpen => !isOpen)}
         >
-          <div
-            className={`h-1 rounded-xl w-[24px] bg-slate-300 transition-all duration-300 ease-in-out ${
-              isOpen ? 'rotate-45 origin-top-left' : ''
-            }`}
-          ></div>
-          <div
-            className={`h-1 rounded-xl w-[24px] bg-slate-300 transition-all duration-300 ease-in-out ${
-              isOpen ? 'opacity-0' : ''
-            }`}
-          ></div>
-          <div
-            className={`h-1 rounded-xl w-[24px] bg-slate-300 transition-all duration-300 ease-in-out ${
-              isOpen ? '-rotate-45 origin-bottom-left' : ''
-            }`}
-          ></div>
+          {hamburgerStyles.map((style, index) => (
+            <div
+              key={index}
+              className={`h-1 rounded-xl w-[24px] bg-slate-300 transition-all duration-300 ease-in-out ${
+                isOpen ? style : ''
+              }`}
+            />
+          ))}
         </button>
       </div>
       <div
-        className={`absolute top-0 left-0 w-screen h-screen transition duration-300 ease-in-out md:hidden ${
+        className={`absolute top-0 left-0 w-screen h-screen z-30 transition duration-300 ease-in-out md:hidden ${
           isOpen ? 'backdrop-blur-sm' : 'pointer-events-none'
         }`}
         onClick={() => setIsOpen(false)}
@@ -56,25 +54,26 @@ export default function NavBar() {
       <ul
         className={`${
           isOpen ? 'translate-x-0' : 'translate-x-full'
-        } absolute top-0 right-0 p-8 pt-16 space-y-10 items-center justify-center flex flex-col translate-x-full transition duration-300 ease-in-out bg-slate-800 w-3/4 h-screen md:translate-x-0 md:p-0 md:space-y-0 md:relative md:bg-transparent md:w-fit md:h-fit md:space-x-4 md:flex-row`}
+        } z-40 absolute top-0 right-0 p-8 pt-16 space-y-10 items-center justify-center flex flex-col transition duration-300 ease-in-out bg-slate-800 w-3/4 h-screen md:translate-x-0 md:p-0 md:space-y-0 md:relative md:bg-transparent md:w-fit md:h-fit md:space-x-4 md:flex-row`}
       >
         {links.map(({ href, label }) => (
           <li key={`${href}${label}`}>
             <Link
               href={href}
-              onClick={() => {
-                setIsOpen(false);
-              }}
+              onClick={() => setIsOpen(false)}
               className={`w-full block text-xl md:w-fit md:text-base ${
                 currentPath == href
                   ? 'text-slate-200 font-bold'
-                  : 'text-slate-300 hover:text-slate-100'
+                  : 'text-slate-400 hover:text-slate-300'
               }`}
             >
               {label}
             </Link>
           </li>
         ))}
+        <li key="resume">
+          <Button href="/resume.pdf" bgColor='bg-slate-800 md:bg-slate-900'>Resume</Button>
+        </li>
       </ul>
     </nav>
   );

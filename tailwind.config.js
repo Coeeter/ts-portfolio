@@ -3,7 +3,11 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   darkMode: 'class',
   theme: {
-    extend: {},
+    extend: {
+      animation: {
+        blink: 'blink 0.4s alternate infinite',
+      }
+    },
   },
   plugins: [],
 };

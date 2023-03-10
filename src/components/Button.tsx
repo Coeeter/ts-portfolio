@@ -1,29 +1,37 @@
-import { useRouter } from 'next/router';
 import React from 'react';
 
 type ButtonProps = {
   children: React.ReactNode;
   href?: string;
   onClick?: () => void;
+  bgColor?: string;
 };
 
-export default function Button({ children, href, onClick }: ButtonProps) {
-  const router = useRouter();
+export default function Button({ children, href, onClick, bgColor = "bg-slate-900" }: ButtonProps) {
+  const child = (
+    <div className="w-fit p-1 bg-gradient-to-r from-violet-700 to-red-600 text-white rounded-md cursor-pointer group">
+      <div className={`${bgColor} relative w-fit outline-none overflow-hidden rounded-md group-hover:bg-transparent`}>
+        <div className={`${bgColor} w-full h-full transition duration-300 absolute ease-in-out top-0 right-0 group-hover:translate-x-[125%]`}></div>
+        <div className="z-10 relative font-bold bg-gradient-to-r transition duration-300 ease-in-out from-violet-700 to-red-600 bg-clip-text text-transparent px-6 py-3 group-hover:text-white">
+          {children}
+        </div>
+      </div>
+    </div>
+  );
 
-  return (
+  return href ? (
+    <a href={href} className="w-fit">
+      {child}
+    </a>
+  ) : (
     <button
-      className="w-fit p-1 bg-gradient-to-r from-violet-700 to-red-600 text-white rounded-md cursor-pointer group"
+      className="w-fit"
       onClick={() => {
-        if (href) return router.push(href);
         if (!onClick) return;
         onClick();
       }}
     >
-      <div className="w-fit outline-none transition duration-150 ease-in-out rounded-md bg-slate-900 group-hover:bg-transparent">
-        <div className="font-bold bg-gradient-to-r transition duration-150 ease-in-out from-violet-700 to-red-600 bg-clip-text text-transparent px-6 py-3 group-hover:text-white">
-          {children}
-        </div>
-      </div>
+      {child}
     </button>
   );
 }
