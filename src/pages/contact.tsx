@@ -1,5 +1,5 @@
-import Head from 'next/head'
-import React from 'react'
+import Head from 'next/head';
+import React from 'react';
 
 export default function contact() {
   return (
@@ -8,8 +8,8 @@ export default function contact() {
         <title>Contact | N.Nasrullah</title>
       </Head>
       <main>
-        <div className='min-h-screen'>Contact</div>
+        <div className="min-h-screen">Contact</div>
       </main>
     </>
-  )
+  );
 }
