@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 interface Particle {
   x: number;
@@ -32,10 +32,7 @@ export default function ParticleCanvas({ className }: ParticleCanvasProps) {
       const colors = ['#4c1d95', '#7f1d1d'];
       const mouseRadius = 100;
       const particles: Particle[] = [];
-      const mouse = {
-        x: width / 2,
-        y: height / 2,
-      };
+      const mouse: { x?: number; y?: number } = {};
 
       const createParticles = () => {
         for (let i = 0; i < maxParticles; i++) {
@@ -81,17 +78,19 @@ export default function ParticleCanvas({ className }: ParticleCanvasProps) {
         particles.forEach(particle => {
           particle.x += particle.vx;
           particle.y += particle.vy;
-          const dx = particle.x - mouse.x;
-          const dy = particle.y - mouse.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-          if (distance < mouseRadius) {
-            particle.vx = (dx / distance) * maxSpeed;
-            particle.vy = (dy / distance) * maxSpeed;
+          if (mouse.x && mouse.y) {
+            const dx = particle.x - mouse.x;
+            const dy = particle.y - mouse.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            if (distance < mouseRadius) {
+              particle.vx = (dx / distance) * maxSpeed;
+              particle.vy = (dy / distance) * maxSpeed;
+            }
           }
-          if (particle.x <= 0 || particle.x > width) {
+          if (particle.x <= 0 || particle.x >= width) {
             particle.vx *= -1;
           }
-          if (particle.y <= 0 || particle.y > height) {
+          if (particle.y <= 0 || particle.y >= height) {
             particle.vy *= -1;
           }
         });
