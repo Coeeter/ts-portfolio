@@ -1,79 +1,19 @@
-import ParticleCanvas from '@/components/ParticleCanvas';
+import About from '@/components/about/About';
+import Contact from '@/components/contact/Contact';
+import Home from '@/components/home/Home';
+import Projects from '@/components/projects/Projects';
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
-import Button from '../components/Button';
 
-const descriptions = [
-  'A Mobile Developer',
-  'A Full Stack Developer',
-  'A Web Developer',
-  'A Problem Solver',
-  'A Learner',
-];
-
-export default function Home() {
-  const [index, setIndex] = useState(0);
-  const [currentLetters, setCurrentLetters] = useState('');
-  const [mode, setMode] = useState<'write' | 'delete'>('write');
-
-  useEffect(() => {
-    const currentDescription = descriptions[index];
-    const timeout = setTimeout(() => {
-      if (mode == 'write') {
-        if (currentLetters.length == currentDescription.length) {
-          return setTimeout(() => {
-            setMode('delete');
-          }, 1000);
-        }
-        return setCurrentLetters(
-          currentDescription.substring(0, currentLetters.length + 1)
-        );
-      }
-      if (currentLetters.length > 0) {
-        return setCurrentLetters(
-          currentDescription.substring(0, currentLetters.length - 1)
-        );
-      }
-      setTimeout(() => {
-        setMode('write');
-        setIndex((index + 1) % descriptions.length);
-      }, 1000);
-    }, 100);
-    return () => clearTimeout(timeout);
-  }, [currentLetters, mode]);
-
+export default function index() {
   return (
     <>
       <Head>
         <title>N.Nasrullah</title>
       </Head>
-      <main className="container mx-auto">
-        <ParticleCanvas className="w-screen h-[100svh] absolute top-0 left-0 pointer-events-none -z-10" />
-        <header className="flex flex-col justify-center min-h-[100svh] p-6 md:p-48 gap-10">
-          <div>
-            <h1 className="text-xl font-semibold md:text-3xl text-slate-300 font-mono">
-              Hi, I am
-            </h1>
-            <h2 className="text-5xl font-extrabold bg-gradient-to-r from-violet-700 to-red-600 w-fit bg-clip-text text-transparent md:text-6xl lg:text-7xl">
-              N. Nasrullah
-            </h2>
-            <h3 className="text-3xl md:text-4xl lg:text-5xl w-fit">
-              {currentLetters}
-              <span
-                className={
-                  currentLetters == '' ||
-                  currentLetters.length == descriptions[index].length
-                    ? 'animate-blink'
-                    : ''
-                }
-              >
-                |
-              </span>
-            </h3>
-          </div>
-          <Button href="/contact">Contact Me</Button>
-        </header>
-      </main>
+      <Home />
+      <About />
+      <Projects />
+      <Contact />
     </>
   );
 }

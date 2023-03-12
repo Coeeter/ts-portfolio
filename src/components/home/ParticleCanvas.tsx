@@ -40,7 +40,7 @@ export default function ParticleCanvas({ className }: ParticleCanvasProps) {
             x: Math.random() * width,
             y: Math.random() * height,
             radius: Math.random() * (maxRadius - minRadius) + minRadius,
-            color: colors[Math.floor(Math.random() * colors.length)],
+            color: colors[i % 2],
             vx: Math.random() * (maxSpeed - minSpeed) + minSpeed,
             vy: Math.random() * (maxSpeed - minSpeed) + minSpeed,
           });

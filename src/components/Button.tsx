@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import React from 'react';
 
 type ButtonProps = {
@@ -15,7 +14,7 @@ export default function Button({
   bgColor = 'bg-slate-900',
 }: ButtonProps) {
   const child = (
-    <div className="w-fit p-1 bg-gradient-to-r from-violet-700 to-red-600 text-white rounded-md cursor-pointer group">
+    <div className="w-fit p-[2px] bg-gradient-to-r from-violet-700 to-red-600 text-white rounded-md cursor-pointer group active:from-violet-800 active:to-red-700">
       <div className="relative w-fit outline-none overflow-hidden rounded-md">
         <div
           className={`${bgColor} w-full h-full transition duration-300 absolute ease-in-out top-0 right-0 group-hover:translate-x-[125%]`}
@@ -28,9 +27,9 @@ export default function Button({
   );
 
   return href ? (
-    <Link href={href} className="w-fit">
+    <a href={href} className="w-fit">
       {child}
-    </Link>
+    </a>
   ) : (
     <button
       className="w-fit"

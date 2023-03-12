@@ -1,13 +1,12 @@
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Button from './Button';
 
 const links = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/contact', label: 'Contact' },
+  { href: '#home', label: 'Home' },
+  { href: '#about', label: 'About' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#contact', label: 'Contact' },
 ];
 
 const hamburgerStyles = [
@@ -23,13 +22,13 @@ export default function NavBar() {
 
   return (
     <nav className="absolute top-0 left-0 p-6 w-full flex justify-between items-center">
-      <Link
+      <a
         href="/"
         className="text-2xl text-slate-200"
         onClick={() => setIsOpen(false)}
       >
         N. Nasrullah
-      </Link>
+      </a>
       <div>
         <button
           className={`md:hidden flex flex-col gap-1 items-center absolute top-0 right-0 z-50 mx-6 my-8`}
@@ -58,7 +57,7 @@ export default function NavBar() {
       >
         {links.map(({ href, label }) => (
           <li key={`${href}${label}`}>
-            <Link
+            <a
               href={href}
               onClick={() => setIsOpen(false)}
               className={`w-full block text-xl md:w-fit md:text-base ${
@@ -68,11 +67,13 @@ export default function NavBar() {
               }`}
             >
               {label}
-            </Link>
+            </a>
           </li>
         ))}
         <li key="resume">
-          <Button href="/resume.pdf" bgColor='bg-slate-800 md:bg-slate-900'>Resume</Button>
+          <Button href="/resume.pdf" bgColor="bg-slate-800 md:bg-slate-900">
+            Resume
+          </Button>
         </li>
       </ul>
     </nav>
