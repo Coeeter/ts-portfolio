@@ -3,10 +3,16 @@
 @tailwind utilities;
 
 @keyframes blink {
-  from {
+  0% {
     opacity: 1;
-  } 
-  to {
+  }
+  50% {
+    opacity: 1;
+  }
+  51% {
+    opacity: 0;
+  }
+  100% {
     opacity: 0;
   }
 }

@@ -108,7 +108,7 @@ export default function ParticleCanvas({ className }: ParticleCanvasProps) {
 
       const onMouseMove = (e: MouseEvent) => {
         mouse.x = e.clientX;
-        mouse.y = e.clientY;
+        mouse.y = e.clientY + window.scrollY;
       };
 
       createParticles();
@@ -118,7 +118,7 @@ export default function ParticleCanvas({ className }: ParticleCanvasProps) {
         cancelAnimationFrame(animationFrameId);
         window.removeEventListener('mousemove', onMouseMove);
       };
-    }, [window.innerWidth, window.innerHeight]);
+    }, [window.innerWidth]);
 
   return <canvas ref={canvasRef} className={className} />;
 }

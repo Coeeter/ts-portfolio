@@ -22,7 +22,7 @@ export default function Home() {
         if (currentLetters.length == currentDescription.length) {
           return setTimeout(() => {
             setMode('delete');
-          }, 1000);
+          }, 2000);
         }
         return setCurrentLetters(
           currentDescription.substring(0, currentLetters.length + 1)
@@ -42,7 +42,7 @@ export default function Home() {
   }, [currentLetters, mode]);
 
   return (
-    <main id="home" className="container mx-auto">
+    <section id="home" className="container mx-auto">
       <ParticleCanvas className="w-screen h-[100svh] absolute top-0 left-0 pointer-events-none -z-10" />
       <header className="flex flex-col justify-center min-h-[100svh] p-6 md:p-48 gap-10">
         <div>
@@ -68,6 +68,6 @@ export default function Home() {
         </div>
         <Button href="#contact">Contact Me</Button>
       </header>
-    </main>
+    </section>
   );
 }

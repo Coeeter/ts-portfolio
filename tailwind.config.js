@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        blink: 'blink 0.5s alternate infinite',
+        blink: 'blink 1s infinite',
       }
     },
   },
