@@ -9,7 +9,6 @@ export default function index() {
     <>
       <Head>
         <title>N.Nasrullah</title>
-        <meta name="theme-color" content="#4c1d95" />
       </Head>
       <Home />
       <About />

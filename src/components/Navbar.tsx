@@ -17,7 +17,7 @@ const hamburgerStyles = [
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [scrollTo, setScrollTo] = useState('/');
+  const [sectionScrolledTo, setSectionScrolledTo] = useState('/');
 
   useEffect(() => {
     document.querySelector('html')?.classList.toggle('overflow-hidden', isOpen);
@@ -34,7 +34,7 @@ export default function NavBar() {
           rect.top < window.innerHeight / 2 &&
           rect.bottom > window.innerHeight / 2
         ) {
-          setScrollTo(section.id == 'home' ? '/' : `#${section.id}`);
+          setSectionScrolledTo(section.id == 'home' ? '/' : `#${section.id}`);
         }
       });
     };
@@ -43,8 +43,8 @@ export default function NavBar() {
   }, []);
 
   useEffect(() => {
-    history.replaceState(null, '', scrollTo);
-  }, [scrollTo]);
+    history.replaceState(null, '', sectionScrolledTo);
+  }, [sectionScrolledTo]);
 
   return (
     <nav
@@ -54,7 +54,7 @@ export default function NavBar() {
     >
       <a
         href="/"
-        className="text-xl text-slate-200"
+        className="text-xl font-bold text-slate-200 md:text-2xl"
         onClick={() => setIsOpen(false)}
       >
         N. Nasrullah
@@ -95,7 +95,7 @@ export default function NavBar() {
                 setIsOpen(false);
               }}
               className={`w-full block text-xl md:w-fit md:text-base ${
-                scrollTo == href
+                sectionScrolledTo == href
                   ? 'text-slate-200 font-bold'
                   : 'text-slate-400 hover:text-slate-300'
               }`}
