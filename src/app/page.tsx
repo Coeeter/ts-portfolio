@@ -1,9 +1,9 @@
 export default function Home() {
   return (
-    <main className="h-full w-full relative">
-      <div className="container mx-auto flex flex-col justify-center items-center h-full">
-        <h1 className="text-5xl font-bold text-center">N. Nasrullah</h1>
-        <p className="text-2xl text-center mt-4">Frontend Engineer</p>
+    <main className="relative h-full w-full">
+      <div className="container mx-auto flex h-full flex-col items-center justify-center">
+        <h1 className="text-center text-5xl font-bold">N. Nasrullah</h1>
+        <p className="mt-4 text-center text-2xl">Frontend Engineer</p>
       </div>
     </main>
   );

@@ -18,8 +18,10 @@ export const NavigationLink = ({ href, label }: NavigationLinkProps) => {
       key="navigation-link"
       variant={'link'}
       className={cn(
-        'hover:no-underline text-muted-foreground hover:text-foreground flex flex-col relative group',
-        pathname === href && 'text-foreground'
+        'group relative flex flex-col hover:no-underline',
+        pathname === href
+          ? 'hover:text-accent-foreground'
+          : 'text-muted-foreground hover:text-foreground'
       )}
       asChild
     >
@@ -28,7 +30,7 @@ export const NavigationLink = ({ href, label }: NavigationLinkProps) => {
 
         {pathname === href && (
           <motion.span
-            className="bg-primary/20 rounded-full absolute inset-0 -z-10 dark:bg-primary/80 group-hover:bg-primary/10 dark:group-hover:bg-primary/70"
+            className="absolute inset-0 -z-10 rounded-full border border-input bg-background group-hover:bg-accent"
             layoutId="activeSection"
             transition={{
               type: 'spring',
