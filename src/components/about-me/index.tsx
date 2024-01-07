@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 import { montserrat } from '@/fonts';
 import { AnimateIn } from '../animate-in';
 import { Mail, Github, Linkedin } from 'lucide-react';
-import { ActionButton } from './action-button';
+import { ActionButtonsGrid } from '../contact-actions';
 
 export const contact = [
   {
@@ -55,13 +55,7 @@ export const AboutMe = () => {
           grow. I am currently pursuing a diploma in Information Technology at
           Temasek Polytechnic.
         </p>
-        <div className="my-12 flex h-full w-full justify-center gap-8">
-          {contact.map(({ value, icon: Icon }) => (
-            <ActionButton key={value} value={value}>
-              <Icon className="h-6 w-6" />
-            </ActionButton>
-          ))}
-        </div>
+        <ActionButtonsGrid />
       </AnimateIn>
       <AnimateIn
         whileHover={{ scale: 1.05 }}

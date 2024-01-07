@@ -1,5 +1,6 @@
 import { Section } from '@/components/Section';
 import { AboutMe } from '@/components/about-me';
+import { ContactMe } from '@/components/contact-me';
 
 export default function HomePage() {
   return (
@@ -17,9 +18,7 @@ export default function HomePage() {
       >
         Experience
       </Section>
-      <Section className="flex items-center justify-center" section="contact">
-        Contact
-      </Section>
+      <ContactMe />
     </main>
   );
 }
