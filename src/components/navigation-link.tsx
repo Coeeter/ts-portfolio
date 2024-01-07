@@ -30,7 +30,7 @@ export const NavigationLink = ({ href, label }: NavigationLinkProps) => {
 
         {pathname === href && (
           <motion.span
-            className="absolute inset-0 -z-10 rounded-full border border-input bg-background group-hover:bg-accent"
+            className="absolute inset-0 -z-10 rounded-full border border-input bg-background "
             layoutId="activeSection"
             transition={{
               type: 'spring',

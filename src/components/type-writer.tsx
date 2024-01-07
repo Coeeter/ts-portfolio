@@ -1,5 +1,6 @@
 'use client';
 
+import { useMounted } from '@/hooks/use-mounted';
 import TypewriterComponent from 'typewriter-effect';
 
 const descriptions = [
@@ -11,6 +12,10 @@ const descriptions = [
 ];
 
 export const TypeWriterBio = () => {
+  const mounted = useMounted();
+
+  if (!mounted) return '_';
+
   return (
     <TypewriterComponent
       options={{
