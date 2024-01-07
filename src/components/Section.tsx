@@ -1,5 +1,4 @@
 'use client';
-
 import { cn } from '@/lib/utils';
 import { useActiveSection } from '@/store/active-section';
 import { ActiveSection } from '@/types/active-section';
@@ -20,7 +19,7 @@ export const Section = ({
   as: Element = 'div',
 }: SectionProps) => {
   const { ref, inView } = useInView({
-    threshold: 0.75,
+    threshold: 0.7,
   });
   const lastUpdated = useActiveSection(state => state.lastChanged);
   const lastUpdatedRef = useRef(lastUpdated);
@@ -40,6 +39,7 @@ export const Section = ({
       if (section !== activeSection) return;
       document.getElementById(section)?.scrollIntoView({
         behavior: 'smooth',
+        block: 'center',
       });
     } finally {
       lastUpdatedRef.current = lastUpdated;
@@ -47,7 +47,7 @@ export const Section = ({
   }, [activeSection, section, lastUpdated]);
 
   return (
-    <Element ref={ref} id={section} className={cn('min-h-full', className)}>
+    <Element id={section} ref={ref} className={cn('min-h-full', className)}>
       {children}
     </Element>
   );

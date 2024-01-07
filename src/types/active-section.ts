@@ -1,7 +1,7 @@
 export const activeSections = [
-  'home',
-  'about',
+  'about me',
   'projects',
+  'awards',
   'experience',
   'contact',
 ] as const;

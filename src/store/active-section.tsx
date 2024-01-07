@@ -8,7 +8,7 @@ type ActiveSectionStore = {
 };
 
 export const useActiveSection = create<ActiveSectionStore>(set => ({
-  activeSection: 'home',
+  activeSection: 'about me',
   lastChanged: new Date(),
   setActiveSection: (section: ActiveSection, mode?: 'click') => {
     return set(({ lastChanged }) => ({

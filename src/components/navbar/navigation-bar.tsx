@@ -13,7 +13,7 @@ export const NavigationBar = () => {
           </span>
         </h1>
         <div className="flex w-full flex-row items-center gap-6 md:w-fit">
-          <ul className="flex w-full flex-wrap justify-center gap-2 md:flex-nowrap">
+          <ul className="flex w-full flex-wrap justify-center md:flex-nowrap md:gap-2">
             {activeSections.map(section => (
               <li key={section}>
                 <NavigationLink section={section} />

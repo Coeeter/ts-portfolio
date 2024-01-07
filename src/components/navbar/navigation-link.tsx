@@ -18,7 +18,7 @@ export const NavigationLink = ({ section }: NavigationLinkProps) => {
       key="navigation-link"
       variant={'link'}
       className={cn(
-        'group relative flex flex-col capitalize hover:no-underline',
+        'group relative flex flex-col text-xs capitalize hover:no-underline md:text-sm',
         activeSection === section
           ? 'hover:text-accent-foreground'
           : 'text-muted-foreground hover:text-foreground'

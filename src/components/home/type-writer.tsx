@@ -14,14 +14,13 @@ const descriptions = [
 export const TypeWriterBio = () => {
   const mounted = useMounted();
 
-  if (!mounted) return '_';
+  if (!mounted) return '|';
 
   return (
     <TypewriterComponent
       options={{
         strings: descriptions,
         autoStart: true,
-        cursor: '_',
         loop: true,
       }}
     />

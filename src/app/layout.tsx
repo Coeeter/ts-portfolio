@@ -1,14 +1,9 @@
 import type { Metadata } from 'next';
-import { Montserrat } from 'next/font/google';
-import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { NavigationBar } from '@/components/navbar/navigation-bar';
 import { cn } from '@/lib/utils';
-
-const montserrat = Montserrat({
-  weight: ['400'],
-  subsets: ['latin'],
-});
+import './globals.css';
+import { inter } from '@/fonts';
 
 export const metadata: Metadata = {
   title: 'N. Nasrullah',
@@ -26,7 +21,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className="h-full w-full scroll-smooth"
     >
-      <body className={cn('h-full w-full', montserrat.className)}>
+      <body className={cn('h-full w-full', inter.className)}>
         <div className="absolute right-[11rem] top-[-6rem] -z-10 h-[31.25rem] w-[31.25rem] rounded-full bg-[#fbe2e3] blur-[150px] sm:w-[68.75rem] md:blur-[10rem] dark:bg-[#946263]"></div>
         <div className="absolute left-[-35rem] top-[-1rem] -z-10 h-[31.25rem] w-[50rem] rounded-full bg-[#dbd7fb] blur-[150px] sm:w-[68.75rem] md:left-[-33rem] md:blur-[10rem] lg:left-[-28rem] xl:left-[-15rem] 2xl:left-[-5rem] dark:bg-[#676394]"></div>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
