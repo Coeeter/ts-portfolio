@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
-import { NavigationBar } from '@/components/navigation-bar';
+import { NavigationBar } from '@/components/navbar/navigation-bar';
 import { cn } from '@/lib/utils';
 
 const montserrat = Montserrat({
@@ -21,7 +21,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className="h-full w-full">
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className="h-full w-full scroll-smooth"
+    >
       <body className={cn('h-full w-full', montserrat.className)}>
         <div className="absolute right-[11rem] top-[-6rem] -z-10 h-[31.25rem] w-[31.25rem] rounded-full bg-[#fbe2e3] blur-[150px] sm:w-[68.75rem] md:blur-[10rem] dark:bg-[#946263]"></div>
         <div className="absolute left-[-35rem] top-[-1rem] -z-10 h-[31.25rem] w-[50rem] rounded-full bg-[#dbd7fb] blur-[150px] sm:w-[68.75rem] md:left-[-33rem] md:blur-[10rem] lg:left-[-28rem] xl:left-[-15rem] 2xl:left-[-5rem] dark:bg-[#676394]"></div>
