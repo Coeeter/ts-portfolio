@@ -19,13 +19,14 @@ export const Section = ({
   className,
   as: Element = 'div',
 }: SectionProps) => {
+  const activeSection = useActiveSection(state => state.activeSection);
+  const setActiveSection = useActiveSection(state => state.setActiveSection);
+  const lastUpdated = useActiveSection(state => state.lastChanged);
+  const lastUpdatedRef = useRef(lastUpdated);
+  const sectionRef = useRef<Element | null>(null);
   const { ref, inView } = useInView({
     threshold: 0.7,
   });
-  const lastUpdated = useActiveSection(state => state.lastChanged);
-  const lastUpdatedRef = useRef(lastUpdated);
-  const activeSection = useActiveSection(state => state.activeSection);
-  const setActiveSection = useActiveSection(state => state.setActiveSection);
 
   useEffect(() => {
     if (!inView) return;
@@ -36,9 +37,10 @@ export const Section = ({
 
   useEffect(() => {
     try {
+      if (!sectionRef.current) return;
       if (lastUpdatedRef.current === lastUpdated) return;
       if (section !== activeSection) return;
-      document.getElementById(section)?.scrollIntoView({
+      sectionRef.current.scrollIntoView({
         behavior: 'smooth',
         block: 'center',
       });
@@ -48,7 +50,13 @@ export const Section = ({
   }, [activeSection, section, lastUpdated]);
 
   return (
-    <Element id={section} ref={ref} className={cn('min-h-full', className)}>
+    <Element
+      ref={(r: Element) => {
+        sectionRef.current = r;
+        ref(r);
+      }}
+      className={cn('min-h-full', className)}
+    >
       {children}
     </Element>
   );
