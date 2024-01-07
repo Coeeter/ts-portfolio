@@ -1,10 +1,10 @@
 import { Section } from '@/components/Section';
-import { Home } from '@/components/home';
+import { AboutMe } from '@/components/about-me';
 
 export default function HomePage() {
   return (
     <main className="container mx-auto h-full w-full">
-      <Home />
+      <AboutMe />
       <Section className="flex items-center justify-center" section="projects">
         Projects
       </Section>

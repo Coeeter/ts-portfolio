@@ -1,4 +1,5 @@
 'use client';
+
 import { cn } from '@/lib/utils';
 import { useActiveSection } from '@/store/active-section';
 import { ActiveSection } from '@/types/active-section';

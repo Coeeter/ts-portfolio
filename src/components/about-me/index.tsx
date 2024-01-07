@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { montserrat } from '@/fonts';
 
-export const Home = () => {
+export const AboutMe = () => {
   return (
     <Section
       section="about me"
