@@ -3,6 +3,27 @@ import { Section } from '../Section';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { montserrat } from '@/fonts';
+import { AnimateIn } from '../animate-in';
+import { Mail, Github, Linkedin } from 'lucide-react';
+import { ActionButton } from './action-button';
+
+export const contact = [
+  {
+    label: 'Mail',
+    value: '#contact',
+    icon: Mail,
+  },
+  {
+    label: 'GitHub',
+    value: 'https://github.com/Coeeter',
+    icon: Github,
+  },
+  {
+    label: 'LinkedIn',
+    value: 'https://www.linkedin.com/in/noorullah-nasrullah/',
+    icon: Linkedin,
+  },
+] as const;
 
 export const AboutMe = () => {
   return (
@@ -12,7 +33,7 @@ export const AboutMe = () => {
         'flex min-h-full w-full flex-col items-center justify-center gap-6 pt-[180px] md:flex-row md:gap-12 md:p-0'
       )}
     >
-      <div className="flex flex-col items-center justify-end md:flex-1">
+      <AnimateIn className="flex min-h-full flex-col items-center justify-end md:flex-1">
         <h1 className="text-center text-3xl font-bold text-muted-foreground md:text-5xl">
           Hi I&apos;m,{' '}
           <span
@@ -34,8 +55,18 @@ export const AboutMe = () => {
           grow. I am currently pursuing a diploma in Information Technology at
           Temasek Polytechnic.
         </p>
-      </div>
-      <div className="relative aspect-square max-h-[75vh] w-full scale-95 rounded-lg bg-white p-4 shadow-2xl transition hover:scale-100 md:flex-1 md:overflow-hidden md:p-8 dark:bg-white/20">
+        <div className="my-12 flex h-full w-full justify-center gap-8">
+          {contact.map(({ value, icon: Icon }) => (
+            <ActionButton key={value} value={value}>
+              <Icon className="h-6 w-6" />
+            </ActionButton>
+          ))}
+        </div>
+      </AnimateIn>
+      <AnimateIn
+        whileHover={{ scale: 1.05 }}
+        className="relative aspect-square max-h-[75vh] w-full rounded-lg bg-white p-4 shadow-2xl md:flex-1 md:overflow-hidden md:p-8 dark:bg-white/20"
+      >
         <Image
           src="/me.jpeg"
           alt="N. Nasrullah"
@@ -43,7 +74,7 @@ export const AboutMe = () => {
           height={1000}
           className="h-full rounded-lg object-cover object-top"
         />
-      </div>
+      </AnimateIn>
     </Section>
   );
 };

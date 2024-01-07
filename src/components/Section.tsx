@@ -25,7 +25,7 @@ export const Section = ({
   const lastUpdatedRef = useRef(lastUpdated);
   const sectionRef = useRef<Element | null>(null);
   const { ref, inView } = useInView({
-    threshold: 0.7,
+    threshold: 0.6,
   });
 
   useEffect(() => {
@@ -51,6 +51,7 @@ export const Section = ({
 
   return (
     <Element
+      id={section}
       ref={(r: Element) => {
         sectionRef.current = r;
         ref(r);
