@@ -6,6 +6,9 @@ export default function HomePage() {
   return (
     <main className="container mx-auto h-full w-full">
       <AboutMe />
+      <Section className="flex items-center justify-center" section="skills">
+        Skills
+      </Section>
       <Section className="flex items-center justify-center" section="projects">
         Projects
       </Section>

@@ -78,6 +78,11 @@ export const ContactMe = () => {
           onSubmit={onSubmit}
           className="flex w-full max-w-md flex-col gap-3 rounded-md bg-background p-3 shadow-xl md:flex-1"
         >
+          <h1 className="text-2xl font-bold">Contact Me</h1>
+          <p className="-mt-3 mb-3 text-muted-foreground">
+            If you have any questions or would like to work together, please
+            feel free to reach out to me.
+          </p>
           <FormField
             control={form.control}
             name="name"
@@ -111,7 +116,10 @@ export const ContactMe = () => {
               <FormItem>
                 <FormLabel>Message</FormLabel>
                 <FormControl>
-                  <Textarea {...field} placeholder="Message" />
+                  <Textarea
+                    {...field}
+                    placeholder="Enter your message for me"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>

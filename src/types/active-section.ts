@@ -1,5 +1,6 @@
 export const activeSections = [
   'about me',
+  'skills',
   'projects',
   'awards',
   'experience',
