@@ -1,5 +1,4 @@
 'use client';
-
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -19,6 +18,7 @@ import { sendMail } from './send-mail.action';
 import { Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
 import { ActionButtonsGrid } from '../contact-actions';
+import { AnimateIn } from '../animate-in';
 
 export const ContactSchema = z.object({
   name: z
@@ -69,75 +69,83 @@ export const ContactMe = () => {
 
   return (
     <Section
-      className="flex w-full flex-col-reverse items-center justify-center pt-[160px] md:flex-row md:pt-0"
+      className="flex w-full items-center justify-center pt-[160px] md:pt-0"
       section="contact"
     >
-      <ActionButtonsGrid className="mt-6 w-fit md:mr-6 md:flex-col" hideEmail />
-      <Form {...form}>
-        <form
-          onSubmit={onSubmit}
-          className="flex w-full max-w-md flex-col gap-3 rounded-md bg-background p-3 shadow-xl md:flex-1"
-        >
-          <h1 className="text-2xl font-bold">Contact Me</h1>
-          <p className="-mt-3 mb-3 text-muted-foreground">
-            If you have any questions or would like to work together, please
-            feel free to reach out to me.
-          </p>
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Name</FormLabel>
-                <FormControl>
-                  <Input {...field} placeholder="Enter your name" />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input {...field} placeholder="e.g. james@gmail.com" />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="message"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Message</FormLabel>
-                <FormControl>
-                  <Textarea
-                    {...field}
-                    placeholder="Enter your message for me"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button
-            type="submit"
-            className="mt-3"
-            disabled={form.formState.isSubmitting}
+      <AnimateIn
+        scroll
+        className="flex flex-col-reverse items-center md:flex-row"
+      >
+        <ActionButtonsGrid
+          className="mt-6 w-fit md:mr-6 md:flex-col"
+          hideEmail
+        />
+        <Form {...form}>
+          <form
+            onSubmit={onSubmit}
+            className="flex w-full max-w-md flex-col gap-3 rounded-md bg-background p-3 shadow-xl md:flex-1"
           >
-            {form.formState.isSubmitting ? (
-              <Loader2 className="animate-spin" />
-            ) : (
-              'Submit'
-            )}
-          </Button>
-        </form>
-      </Form>
+            <h1 className="text-2xl font-bold">Contact Me</h1>
+            <p className="-mt-3 mb-3 text-muted-foreground">
+              If you have any questions or would like to work together, please
+              feel free to reach out to me.
+            </p>
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Name</FormLabel>
+                  <FormControl>
+                    <Input {...field} placeholder="Enter your name" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input {...field} placeholder="e.g. james@gmail.com" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="message"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Message</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      {...field}
+                      placeholder="Enter your message for me"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button
+              type="submit"
+              className="mt-3"
+              disabled={form.formState.isSubmitting}
+            >
+              {form.formState.isSubmitting ? (
+                <Loader2 className="animate-spin" />
+              ) : (
+                'Submit'
+              )}
+            </Button>
+          </form>
+        </Form>
+      </AnimateIn>
     </Section>
   );
 };

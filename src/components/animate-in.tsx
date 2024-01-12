@@ -2,27 +2,35 @@
 
 import { motion } from 'framer-motion';
 import type { MotionProps } from 'framer-motion';
-import { ReactNode } from 'react';
+import { HTMLProps, ReactNode } from 'react';
 
-type AnimateInProps = MotionProps & {
-  children?: ReactNode;
-  className?: string;
-};
+type AnimateInProps = MotionProps &
+  Omit<HTMLProps<HTMLDivElement>, 'ref'> & {
+    children?: ReactNode;
+    scroll?: boolean;
+  };
 
 export const AnimateIn = ({
   children,
-  className,
-  initial = { opacity: 0, y: 20 },
+  initial = { opacity: 0, y: 75 },
   animate = { opacity: 1, y: 0 },
+  scroll = false,
   ...options
 }: AnimateInProps) => {
+  if (scroll) {
+    options.whileInView = options.whileInView || {
+      opacity: 1,
+      y: 0,
+    };
+    options.viewport = {
+      once: true,
+      amount: 0.9,
+    };
+    animate = false;
+  }
+
   return (
-    <motion.div
-      initial={initial}
-      animate={animate}
-      {...options}
-      className={className}
-    >
+    <motion.div initial={initial} animate={animate} {...options}>
       {children}
     </motion.div>
   );
