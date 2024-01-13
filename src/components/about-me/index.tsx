@@ -34,7 +34,7 @@ export const AboutMe = () => {
       )}
     >
       <AnimateIn className="flex min-h-full flex-col items-center justify-end md:flex-1">
-        <h1 className="text-center text-3xl font-bold text-muted-foreground md:text-5xl">
+        <h1 className="text-center text-3xl font-bold text-muted-foreground md:text-4xl lg:text-5xl">
           Hi I&apos;m,{' '}
           <span
             className={cn(
@@ -45,7 +45,7 @@ export const AboutMe = () => {
             N. Nasrullah
           </span>
         </h1>
-        <h2 className="mt-4 w-fit text-center text-2xl font-bold text-muted-foreground backdrop-blur-sm md:text-5xl">
+        <h2 className="mt-4 w-fit text-center text-2xl font-bold text-muted-foreground backdrop-blur-sm md:text-4xl lg:text-5xl">
           <TypeWriterBio />
         </h2>
         <p className="mt-6 w-full max-w-md px-3 text-center text-lg text-muted-foreground md:text-xl">
@@ -55,7 +55,7 @@ export const AboutMe = () => {
           grow. I am currently pursuing a diploma in Information Technology at
           Temasek Polytechnic.
         </p>
-        <ActionButtonsGrid />
+        <ActionButtonsGrid className="my-12 md:my-0 md:mt-12" />
       </AnimateIn>
       <AnimateIn
         whileHover={{ scale: 1.05 }}

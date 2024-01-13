@@ -23,7 +23,7 @@ export default function RootLayout({
     >
       <body
         className={cn(
-          'h-full w-full scroll-smooth bg-zinc-100 dark:bg-background',
+          'h-full w-full overflow-x-hidden scroll-smooth bg-zinc-100 dark:bg-background',
           inter.className
         )}
       >

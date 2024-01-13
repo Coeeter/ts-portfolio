@@ -21,17 +21,20 @@ export const AnimateIn = ({
     options.whileInView = options.whileInView || {
       opacity: 1,
       y: 0,
+      transition: options.transition,
     };
-    options.viewport = {
+    options.viewport = options.viewport || {
       once: true,
       amount: 0.9,
     };
     animate = false;
   }
 
+  const Comp = motion(options.as || 'div');
+
   return (
-    <motion.div initial={initial} animate={animate} {...options}>
+    <Comp initial={initial} animate={animate} {...options}>
       {children}
-    </motion.div>
+    </Comp>
   );
 };

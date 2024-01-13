@@ -2,6 +2,7 @@ import { Section } from '@/components/Section';
 import { AboutMe } from '@/components/about-me';
 import { ContactMe } from '@/components/contact-me';
 import { NavigationBar } from '@/components/navbar/navigation-bar';
+import { SkillsSection } from '@/components/skills';
 
 export default function HomePage() {
   return (
@@ -9,9 +10,7 @@ export default function HomePage() {
       <NavigationBar />
       <main className="container mx-auto h-full w-full">
         <AboutMe />
-        <Section className="flex items-center justify-center" section="skills">
-          Skills
-        </Section>
+        <SkillsSection />
         <Section
           className="flex items-center justify-center"
           section="projects"

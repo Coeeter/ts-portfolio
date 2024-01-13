@@ -3,8 +3,8 @@
 import { cn } from '@/lib/utils';
 import { useActiveSection } from '@/store/active-section';
 import { ActiveSection } from '@/types/active-section';
+import { useInView } from 'framer-motion';
 import { ElementType, ReactNode, useEffect, useRef } from 'react';
-import { useInView } from 'react-intersection-observer';
 
 type SectionProps = {
   children: ReactNode;
@@ -23,9 +23,9 @@ export const Section = ({
   const setActiveSection = useActiveSection(state => state.setActiveSection);
   const lastUpdated = useActiveSection(state => state.lastChanged);
   const lastUpdatedRef = useRef(lastUpdated);
-  const sectionRef = useRef<Element | null>(null);
-  const { ref, inView } = useInView({
-    threshold: 0.6,
+  const sectionRef = useRef<Element>(null);
+  const inView = useInView(sectionRef, {
+    amount: 0.4,
   });
 
   useEffect(() => {
@@ -51,14 +51,7 @@ export const Section = ({
   }, [activeSection, section, lastUpdated]);
 
   return (
-    <Element
-      id={section}
-      ref={(r: Element) => {
-        sectionRef.current = r;
-        ref(r);
-      }}
-      className={cn('min-h-full', className)}
-    >
+    <Element ref={sectionRef} className={cn('min-h-full', className)}>
       {children}
     </Element>
   );
