@@ -1,9 +1,9 @@
 'use server';
 
 import { z } from 'zod';
-import { ContactSchema } from '.';
 import { Resend } from 'resend';
 import { EmailTemplate } from './email-template';
+import { ContactSchema } from './form';
 
 const resend = new Resend(process.env['RESEND_API_KEY']);
 
