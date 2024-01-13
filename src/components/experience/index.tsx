@@ -34,7 +34,7 @@ export const Experience = () => {
               src={experienceSection.image}
               width={64}
               height={64}
-              alt="Govtech Singapore"
+              alt={experienceSection.company}
               className="rounded-full border border-border"
             />
             <div
