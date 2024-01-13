@@ -2,6 +2,8 @@ import Image from 'next/image';
 import { Section } from '../Section';
 import { experience } from './experience';
 import { format } from 'date-fns';
+import { AnimateIn } from '../animate-in';
+import { cn } from '@/lib/utils';
 
 export const Experience = () => {
   return (
@@ -20,9 +22,13 @@ export const Experience = () => {
         }`;
 
         return (
-          <div
+          <AnimateIn
             key={i}
             className="flex max-w-md items-start gap-4 pb-6 last:pb-0"
+            scroll={true}
+            transition={{
+              delay: i * 0.05,
+            }}
           >
             <Image
               src={experienceSection.image}
@@ -31,7 +37,15 @@ export const Experience = () => {
               alt="Govtech Singapore"
               className="rounded-full border border-border"
             />
-            <div className="relative h-full pl-5 before:absolute before:-top-[24px] before:left-0 before:h-[calc(100%+48px)] before:w-1 before:rounded-full before:bg-muted-foreground/20 before:content-[''] first:before:h-[calc(100%+48px)]">
+            <div
+              className={cn(
+                "relative h-full pl-5 before:absolute before:left-0 before:w-1 before:bg-muted-foreground/20 before:content-['']",
+                i === 0
+                  ? 'before:-top-[24px] before:h-[calc(100%+48px)] before:rounded-t-full'
+                  : 'before:top-0 before:h-[calc(100%+24px)]',
+                i === experience.length - 1 && 'before:rounded-b-full'
+              )}
+            >
               <div className="absolute -left-2 top-[32px] h-5 w-5 -translate-y-1/2 rounded-full bg-muted-foreground" />
               <p className="text-sm text-muted-foreground">{range}</p>
               <h3 className="text-lg font-bold">
@@ -61,7 +75,7 @@ export const Experience = () => {
                 ))}
               </div>
             </div>
-          </div>
+          </AnimateIn>
         );
       })}
     </Section>

@@ -2,12 +2,13 @@
 
 import { motion } from 'framer-motion';
 import type { MotionProps } from 'framer-motion';
-import { HTMLProps, ReactNode } from 'react';
+import { ElementType, HTMLProps, ReactNode } from 'react';
 
 type AnimateInProps = MotionProps &
   Omit<HTMLProps<HTMLDivElement>, 'ref'> & {
     children?: ReactNode;
     scroll?: boolean;
+    asElement?: ElementType;
   };
 
 export const AnimateIn = ({
@@ -30,7 +31,7 @@ export const AnimateIn = ({
     animate = false;
   }
 
-  const Comp = motion(options.as || 'div');
+  const Comp = motion(options.asElement || 'div');
 
   return (
     <Comp initial={initial} animate={animate} {...options}>
