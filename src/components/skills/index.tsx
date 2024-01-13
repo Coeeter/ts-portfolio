@@ -3,7 +3,7 @@ import { AnimateIn } from '../animate-in';
 import { skills } from './skills';
 import Image from 'next/image';
 
-export const SkillsSection = () => {
+export const Skills = () => {
   return (
     <Section
       section="skills"
@@ -20,7 +20,7 @@ export const SkillsSection = () => {
           }}
           viewport={{
             once: true,
-            amount: 0.5,
+            amount: 0.1,
           }}
           className="mx-auto mb-8 flex flex-col items-center"
           key={skillSection.section}
@@ -34,12 +34,13 @@ export const SkillsSection = () => {
                 key={skill.name}
                 href={skill.url}
                 target="_blank"
-                className="flex cursor-pointer items-center gap-2 rounded-full bg-background px-4 py-2 text-sm font-bold transition hover:bg-foreground/5 dark:bg-muted dark:hover:bg-muted/70"
+                className="flex cursor-pointer items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-bold transition hover:bg-foreground/5 dark:bg-muted dark:hover:bg-muted/70"
               >
                 <Image
                   src={`/icons/${skillSection.path}/${skill.icon}.svg`}
-                  width={24}
-                  height={24}
+                  className="rounded-full bg-background p-1 dark:bg-foreground"
+                  width={32}
+                  height={32}
                   alt=""
                 />
                 {skill.name}

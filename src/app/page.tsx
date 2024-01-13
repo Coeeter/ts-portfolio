@@ -1,8 +1,9 @@
 import { Section } from '@/components/Section';
 import { AboutMe } from '@/components/about-me';
 import { ContactMe } from '@/components/contact-me';
+import { Experience } from '@/components/experience';
 import { NavigationBar } from '@/components/navbar/navigation-bar';
-import { SkillsSection } from '@/components/skills';
+import { Skills } from '@/components/skills';
 
 export default function HomePage() {
   return (
@@ -10,7 +11,7 @@ export default function HomePage() {
       <NavigationBar />
       <main className="container mx-auto h-full w-full">
         <AboutMe />
-        <SkillsSection />
+        <Skills />
         <Section
           className="flex items-center justify-center"
           section="projects"
@@ -20,12 +21,7 @@ export default function HomePage() {
         <Section className="flex items-center justify-center" section="awards">
           Awards
         </Section>
-        <Section
-          className="flex items-center justify-center"
-          section="experience"
-        >
-          Experience
-        </Section>
+        <Experience />
         <ContactMe />
       </main>
     </>
