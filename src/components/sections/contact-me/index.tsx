@@ -1,6 +1,6 @@
-import { Section } from '../Section';
-import { ActionButtonsGrid } from '../contact-actions';
-import { AnimateIn } from '../animate-in';
+import { Section } from '../../Section';
+import { ActionButtonsGrid } from '../../contact-actions';
+import { AnimateIn } from '../../animate-in';
 import { ContactForm } from './form';
 
 export const ContactMe = () => {

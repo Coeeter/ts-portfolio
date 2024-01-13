@@ -1,5 +1,5 @@
-import { Section } from '../Section';
-import { AnimateIn } from '../animate-in';
+import { Section } from '../../Section';
+import { AnimateIn } from '../../animate-in';
 import { skills } from './skills';
 import Image from 'next/image';
 

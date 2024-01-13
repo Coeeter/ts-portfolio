@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import { Section } from '../Section';
+import { Section } from '../../Section';
 import { experience } from './experience';
 import { format } from 'date-fns';
-import { AnimateIn } from '../animate-in';
+import { AnimateIn } from '../../animate-in';
 import { cn } from '@/lib/utils';
 
 export const Experience = () => {

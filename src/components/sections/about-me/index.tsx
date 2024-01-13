@@ -1,11 +1,11 @@
 import { TypeWriterBio } from './type-writer';
-import { Section } from '../Section';
+import { Section } from '../../Section';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { montserrat } from '@/fonts';
-import { AnimateIn } from '../animate-in';
+import { AnimateIn } from '../../animate-in';
 import { Mail, Github, Linkedin } from 'lucide-react';
-import { ActionButtonsGrid } from '../contact-actions';
+import { ActionButtonsGrid } from '../../contact-actions';
 
 export const contact = [
   {

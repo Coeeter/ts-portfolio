@@ -3,7 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { Button } from '../ui/button';
+import { Button } from '../../ui/button';
 import {
   Form,
   FormControl,
@@ -11,9 +11,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '../ui/form';
-import { Input } from '../ui/input';
-import { Textarea } from '../ui/textarea';
+} from '../../ui/form';
+import { Input } from '../../ui/input';
+import { Textarea } from '../../ui/textarea';
 import { sendMail } from './send-mail.action';
 import { Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
