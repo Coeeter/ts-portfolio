@@ -25,7 +25,7 @@ export const Section = ({
   const lastUpdatedRef = useRef(lastUpdated);
   const sectionRef = useRef<Element>(null);
   const inView = useInView(sectionRef, {
-    amount: 0.4,
+    amount: 0.3,
   });
 
   useEffect(() => {
