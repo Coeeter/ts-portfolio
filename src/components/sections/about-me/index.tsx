@@ -33,18 +33,16 @@ export const AboutMe = () => {
       )}
     >
       <AnimateIn className="flex min-h-full flex-col items-center justify-end md:flex-1">
-        <h1 className="text-center text-3xl font-bold text-muted-foreground md:text-4xl lg:text-5xl">
+        <h1 className="text-center text-3xl text-foreground/50 md:text-4xl lg:text-5xl">
           Hi I&apos;m,{' '}
-          <span
-            className={cn('font-montserrat font-extrabold text-foreground')}
-          >
+          <span className={cn('font-montserrat font-bold text-foreground')}>
             N. Nasrullah
           </span>
         </h1>
-        <h2 className="mt-4 w-fit text-center text-2xl font-bold text-muted-foreground backdrop-blur-sm md:text-4xl lg:text-5xl">
+        <h2 className="mt-4 w-fit text-center text-2xl text-foreground/50 backdrop-blur-sm md:text-4xl lg:text-5xl">
           <TypeWriterBio />
         </h2>
-        <p className="mt-6 w-full max-w-md px-3 text-center text-lg text-muted-foreground md:text-xl">
+        <p className="mt-6 w-full max-w-md px-3 text-center text-lg font-light text-muted-foreground md:text-xl">
           I am a software engineer with a passion for{' '}
           <span className="line-through">breaking</span> building things. I love
           learning new technologies and always looking for new opportunities to
