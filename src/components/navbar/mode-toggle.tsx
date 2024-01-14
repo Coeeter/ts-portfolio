@@ -29,7 +29,7 @@ export function ModeToggle() {
           <DropdownMenuItem
             key={item}
             onClick={() => setTheme(item)}
-            className="capitalize"
+            className="cursor-pointer capitalize"
           >
             {item}
           </DropdownMenuItem>
