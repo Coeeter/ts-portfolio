@@ -1,9 +1,21 @@
-import type { Metadata } from 'next';
 import { ThemeProvider } from '@/components/theme-provider';
-import { cn } from '@/lib/utils';
-import './globals.css';
-import { inter } from '@/fonts';
 import { Toaster } from '@/components/ui/sonner';
+import { cn } from '@/lib/utils';
+import type { Metadata } from 'next';
+import { Montserrat, Open_Sans } from 'next/font/google';
+import './globals.css';
+
+const montserrat = Montserrat({
+  weight: ['400', '100', '200', '300', '500', '600', '700', '800', '900'],
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+});
+
+const openSans = Open_Sans({
+  weight: ['400', '300', '500', '600', '700', '800'],
+  subsets: ['latin'],
+  variable: '--font-open-sans',
+});
 
 export const metadata: Metadata = {
   title: 'N. Nasrullah',
@@ -18,13 +30,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      suppressHydrationWarning
-      className="h-full w-full scroll-smooth"
+      className={cn(
+        'h-full w-full scroll-smooth',
+        montserrat.variable,
+        openSans.variable
+      )}
     >
       <body
         className={cn(
-          'h-full w-full overflow-x-hidden scroll-smooth bg-zinc-100 dark:bg-background',
-          inter.className
+          'font-open-sans h-full w-full overflow-x-hidden scroll-smooth bg-zinc-100 dark:bg-background'
         )}
       >
         <div className="absolute right-[11rem] top-[-6rem] -z-10 h-[31.25rem] w-[31.25rem] rounded-full bg-[#fbe2e3] blur-[150px] sm:w-[68.75rem] md:blur-[10rem] dark:bg-[#946263]"></div>

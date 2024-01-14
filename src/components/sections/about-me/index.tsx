@@ -2,7 +2,6 @@ import { TypeWriterBio } from './type-writer';
 import { Section } from '../../Section';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { montserrat } from '@/fonts';
 import { AnimateIn } from '../../animate-in';
 import { Mail, Github, Linkedin } from 'lucide-react';
 import { ActionButtonsGrid } from '../../contact-actions';
@@ -37,10 +36,7 @@ export const AboutMe = () => {
         <h1 className="text-center text-3xl font-bold text-muted-foreground md:text-4xl lg:text-5xl">
           Hi I&apos;m,{' '}
           <span
-            className={cn(
-              'font-extrabold text-foreground',
-              montserrat.className
-            )}
+            className={cn('font-montserrat font-extrabold text-foreground')}
           >
             N. Nasrullah
           </span>

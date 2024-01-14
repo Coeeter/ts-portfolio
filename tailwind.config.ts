@@ -18,6 +18,10 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        montserrat: ['var(--font-montserrat)'],
+        'open-sans': ['var(--font-open-sans)'],
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
