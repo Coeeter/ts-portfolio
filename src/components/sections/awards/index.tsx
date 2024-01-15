@@ -13,7 +13,7 @@ import { AnimateIn } from '@/components/animate-in';
 export const Awards = () => {
   return (
     <Section
-      className="flex flex-col items-center pt-44 sm:pt-32 md:pt-20"
+      className="flex min-h-full flex-col items-center pt-44 sm:pt-32 md:pt-20"
       section="achievements"
     >
       <h1 className="mb-16 w-full text-center text-3xl font-bold capitalize">

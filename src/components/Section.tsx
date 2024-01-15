@@ -51,7 +51,7 @@ export const Section = ({
   }, [activeSection, section, lastUpdated]);
 
   return (
-    <Element ref={sectionRef} className={cn('min-h-full', className)}>
+    <Element ref={sectionRef} className={cn(className)}>
       {children}
     </Element>
   );

@@ -20,7 +20,7 @@ export const awards = [
   },
   {
     title: "Director's List 2021",
-    description: 'Top 5% of the cohort',
+    description: 'Top 10% of the cohort',
     image: '/awards/director.jpeg',
     year: 2021,
   },
