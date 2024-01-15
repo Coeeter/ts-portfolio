@@ -27,16 +27,16 @@ const openSans = Open_Sans({
 
 export const metadata: Metadata = {
   title: 'N. Nasrullah',
-  description: 'Noorullah Nasrullah Portfolio',
+  description: "Noorullah Nasrullah's Portfolio Website",
   abstract: 'Noorullah Nasrullah Portfolio',
   creator: 'Noorullah Nasrullah',
   referrer: 'no-referrer-when-downgrade',
   metadataBase: new URL('https://nasnoor.dev'),
   keywords: [
-    'Noorullah Nasrullah',
     'Nasrullah',
     'Nas',
     'nasnoor',
+    'Noorullah',
     'portfolio',
     'nasnoor.dev',
     'Developer',
