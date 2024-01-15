@@ -1,6 +1,4 @@
 import { featuredProjects } from './featured-projects';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
 import { AnimateIn } from '@/components/animate-in';
 import { z } from 'zod';
 import Image from 'next/image';
@@ -10,6 +8,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { CardActions } from './card-actions';
 
 const RepoSchema = z.object({
   name: z.string(),
@@ -225,20 +224,7 @@ const ProjectCard = ({ type, index, project }: ProjectCardProps) => {
               )
           )}
         </div>
-        <div className="flex gap-2">
-          {project.homepage && (
-            <Button asChild>
-              <Link href={project.homepage} target="_blank">
-                Demo
-              </Link>
-            </Button>
-          )}
-          <Button asChild variant={'secondary'}>
-            <Link href={project.url} target="_blank">
-              View Repository
-            </Link>
-          </Button>
-        </div>
+        <CardActions repo={project.url} demo={project.homepage} />
       </div>
     </AnimateIn>
   );

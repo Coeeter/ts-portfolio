@@ -1,5 +1,6 @@
 import { Section } from '../../Section';
 import { AnimateIn } from '../../animate-in';
+import { SkillLink } from './skill-link';
 import { skills } from './skills';
 import Image from 'next/image';
 
@@ -27,12 +28,7 @@ export const Skills = () => {
           </h1>
           <div className="flex flex-wrap justify-center gap-4">
             {frameworks.map(({ name, url, icon }) => (
-              <a
-                key={name}
-                href={url}
-                target="_blank"
-                className="flex cursor-pointer items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-bold transition hover:scale-110 hover:bg-foreground/5 dark:bg-muted dark:hover:bg-muted/70"
-              >
+              <SkillLink key={name} url={url}>
                 <Image
                   src={`/icons/${path}/${icon}.svg`}
                   className="rounded-full bg-background p-1 dark:bg-foreground"
@@ -41,7 +37,7 @@ export const Skills = () => {
                   alt=""
                 />
                 {name}
-              </a>
+              </SkillLink>
             ))}
           </div>
         </AnimateIn>

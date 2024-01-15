@@ -11,6 +11,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { CardActions } from './card-actions';
 
 export const Projects = async () => {
   return (
@@ -59,20 +60,11 @@ export const Projects = async () => {
                 </TooltipProvider>
               ))}
             </div>
-            <div className="mt-2 flex gap-2">
-              {project.demo && (
-                <Button asChild>
-                  <Link href={project.demo} target="_blank">
-                    Demo
-                  </Link>
-                </Button>
-              )}
-              <Button asChild variant="secondary">
-                <Link href={project.url} target="_blank">
-                  View Repository
-                </Link>
-              </Button>
-            </div>
+            <CardActions
+              repo={project.url}
+              demo={project.demo}
+              className="mt-2"
+            />
           </div>
         </AnimateIn>
       ))}

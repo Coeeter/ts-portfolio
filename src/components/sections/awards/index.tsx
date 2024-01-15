@@ -2,13 +2,12 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from '@/components/ui/carousel';
 import { Section } from '../../Section';
 import { awards } from './awards';
 import Image from 'next/image';
 import { AnimateIn } from '@/components/animate-in';
+import { CarouselControls } from './carousel-controls';
 
 export const Awards = () => {
   return (
@@ -43,8 +42,7 @@ export const Awards = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselNext className="right-4" />
-          <CarouselPrevious className="left-4" />
+          <CarouselControls />
         </Carousel>
       </AnimateIn>
     </Section>

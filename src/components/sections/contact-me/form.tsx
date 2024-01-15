@@ -17,6 +17,7 @@ import { Textarea } from '../../ui/textarea';
 import { sendMail } from './send-mail.action';
 import { Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
+import { usePostHog } from 'posthog-js/react';
 
 export const ContactSchema = z.object({
   name: z
@@ -46,6 +47,7 @@ export const ContactSchema = z.object({
 });
 
 export const ContactForm = () => {
+  const posthog = usePostHog();
   const form = useForm<z.infer<typeof ContactSchema>>({
     resolver: zodResolver(ContactSchema),
   });
@@ -58,6 +60,9 @@ export const ContactForm = () => {
       toast.error(error, {
         description: 'Please try again later',
       });
+      posthog.capture('contact form submit failed', {
+        error: error,
+      });
       return;
     }
 
@@ -66,6 +71,7 @@ export const ContactForm = () => {
       email: '',
       message: '',
     });
+    posthog.capture('contact form submit success');
     toast.success('Message sent successfully!');
   });
 
