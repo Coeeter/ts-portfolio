@@ -6,7 +6,7 @@ import { ContactForm } from './form';
 export const ContactMe = () => {
   return (
     <Section
-      className="flex min-h-full w-full items-center justify-center pt-[160px] md:pt-0"
+      className="flex min-h-screen w-full items-center justify-center pt-[160px] md:pt-0"
       section="contact"
     >
       <AnimateIn

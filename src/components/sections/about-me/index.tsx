@@ -29,7 +29,7 @@ export const AboutMe = () => {
     <Section
       section="about me"
       className={cn(
-        'flex min-h-full w-full flex-col items-center justify-center pt-[180px] md:flex-row md:gap-12 md:p-0'
+        'flex min-h-screen w-full flex-col items-center justify-center pt-[180px] md:flex-row md:gap-12 md:p-0'
       )}
     >
       <AnimateIn className="flex min-h-full flex-col items-center justify-end md:flex-1">

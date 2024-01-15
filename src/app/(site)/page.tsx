@@ -12,7 +12,7 @@ export default function HomePage() {
   return (
     <>
       <NavigationBar />
-      <main className="container mx-auto h-full w-full">
+      <main className="container mx-auto w-full">
         <AboutMe />
         <Skills />
         <Projects />
