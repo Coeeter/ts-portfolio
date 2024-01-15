@@ -4,7 +4,14 @@ import type { Metadata } from 'next';
 import { Montserrat, Open_Sans } from 'next/font/google';
 import './globals.css';
 import { Providers } from '@/components/providers';
-import PostHogPageView from '@/components/posthog-page-view';
+import dynamic from 'next/dynamic';
+
+const PostHogPageView = dynamic(
+  () => import('@/components/posthog-page-view'),
+  {
+    ssr: false,
+  }
+);
 
 const montserrat = Montserrat({
   weight: ['400', '100', '200', '300', '500', '600', '700', '800', '900'],
