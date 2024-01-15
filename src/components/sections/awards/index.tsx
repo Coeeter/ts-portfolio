@@ -20,31 +20,31 @@ export const Awards = () => {
         My Achievements
       </h1>
       <AnimateIn scroll>
-        <Carousel className="max-w-md lg:max-w-lg xl:max-w-3xl">
-          <CarouselContent className="m-0 w-full">
+        <Carousel className="w-full max-w-5xl">
+          <CarouselContent className="m-0 h-full w-full">
             {awards.map((award, i) => (
-              <CarouselItem key={i} className="relative pl-0">
+              <CarouselItem key={i} className="relative h-full w-full pl-0">
                 <Image
-                  src={award.image ?? '/awards/director.jpeg'}
+                  src={award.image}
                   alt={award.title}
                   width={1000}
                   height={1000}
-                  className="w-full object-cover object-center"
+                  className="aspect-square w-full object-cover object-center md:aspect-video"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-2 pt-4 text-white">
-                  <h3 className="text-center font-montserrat text-xl font-bold">
+                  <h3 className="text-center font-montserrat font-bold md:text-xl">
                     {award.title}{' '}
                     <span className="font-extrabold">({award.year})</span>
                   </h3>
-                  <p className="text-center text-white/80">
+                  <p className="text-center text-xs text-white/80 md:text-base">
                     {award.description}
                   </p>
                 </div>
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselNext />
-          <CarouselPrevious />
+          <CarouselNext className="right-4" />
+          <CarouselPrevious className="left-4" />
         </Carousel>
       </AnimateIn>
     </Section>

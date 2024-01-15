@@ -38,7 +38,7 @@ export default function RootLayout({
     >
       <body
         className={cn(
-          'font-open-sans h-full w-full overflow-x-hidden scroll-smooth bg-zinc-100 dark:bg-background'
+          'h-full w-full overflow-x-hidden scroll-smooth bg-zinc-100 font-open-sans dark:bg-background'
         )}
       >
         <div className="absolute right-[11rem] top-[-6rem] -z-10 h-[31.25rem] w-[31.25rem] rounded-full bg-[#fbe2e3] blur-[150px] sm:w-[68.75rem] md:blur-[10rem] dark:bg-[#946263]"></div>
