@@ -61,8 +61,9 @@ export const Projects = async () => {
               ))}
             </div>
             <CardActions
-              repo={project.url}
+              type="all"
               demo={project.demo}
+              repo={project.url}
               className="mt-2"
             />
           </div>

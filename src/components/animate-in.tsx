@@ -1,23 +1,22 @@
 'use client';
-
 import { motion } from 'framer-motion';
 import type { MotionProps } from 'framer-motion';
-import { ElementType, HTMLProps, ReactNode } from 'react';
+import { ComponentProps, ElementType, HTMLProps, ReactNode } from 'react';
 
-type AnimateInProps = MotionProps &
+type AnimateInProps<T extends ElementType> = MotionProps &
   Omit<HTMLProps<HTMLDivElement>, 'ref'> & {
     children?: ReactNode;
     scroll?: boolean;
-    asElement?: ElementType;
-  };
+    asElement?: T;
+  } & ComponentProps<T>;
 
-export const AnimateIn = ({
+export const AnimateIn = <T extends ElementType>({
   children,
   initial = { opacity: 0, y: 75 },
   animate = { opacity: 1, y: 0 },
   scroll = false,
   ...options
-}: AnimateInProps) => {
+}: AnimateInProps<T>) => {
   if (scroll) {
     options.whileInView = options.whileInView || {
       opacity: 1,
